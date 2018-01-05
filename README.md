@@ -1,6 +1,6 @@
-# Project Title
+# Game ON!
 
-One Paragraph of project description goes here
+Team Enigma will build a website reservation system for sports enthusiasts to sign up for a roster spot or create pick-up games
 
 ## Getting Started
 
