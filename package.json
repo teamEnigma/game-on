@@ -1,0 +1,27 @@
+{
+  "name": "game-on",
+  "version": "1.0.0",
+  "description": "A website reservation system for sports enthusiasts to sign up for a roster spot or create pick-up games.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamEnigma/game-on.git"
+  },
+  "author": "Team Enigma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teamEnigma/game-on/issues"
+  },
+  "homepage": "https://github.com/teamEnigma/game-on#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.29.0"
+  }
+}
