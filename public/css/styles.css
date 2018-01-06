@@ -1,3 +1,11 @@
-body {
+/*body {
 	background-image: url("/images/fieldbackground.png")
+}*/
+
+html { 
+  background: url("/images/fieldbackground.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
