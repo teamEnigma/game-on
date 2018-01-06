@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	//alert("hey");
 	
-	$("#form").submit(function(event) {
+	$("#register-form").submit(function(event) {
 		 event.preventDefault();
 		//console.log(event);
 
@@ -36,6 +36,26 @@ $(document).ready(function() {
 		  //dataType: dataType
 		});
 
+	});
+
+	$("#login-form").submit(function(event) {
+		event.preventDefault();
+
+		console.log("hey");
+
+		var data = {
+			username: $("#username").val().trim(),
+			password: $("#login-password").val().trim(),
+			
+		}
+
+		$.ajax({
+		  type: "GET",
+		  url: "/api/login",
+		  data: data
+		  //success: success,
+		  //dataType: dataType
+		});
 
 	});
 

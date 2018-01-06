@@ -5,6 +5,15 @@ module.exports = function(app) {
         console.log(req);
 
     })
+
+    app.get('/api/login', function(req, res) {
+       var username = req.query.username;
+       var password = req.query.password;
+
+    })
+
+
+
 }
 
 
