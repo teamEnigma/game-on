@@ -1,3 +1,19 @@
+
 body {
-	background-image: url("/images/fieldbackground.png")
+	background-image: url("/images/fieldbackground.png");
+	background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-webkit-background-size: cover;
 }
+
+
+/*
+html { 
+	background: url("/images/fieldbackgroun.png") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  }
+*/
