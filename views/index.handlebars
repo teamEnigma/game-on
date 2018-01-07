@@ -1,13 +1,51 @@
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Game ON!</h1>
-			<h3>Find a game and get notified</h3>
+			<h1 class="text-center">Game ON!</h1>
+			<h3 class="text-center">Find a game and get notified</h3>
 			<hr>
-			<!-- <a href="/add" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Start a game</a>
-			<a href="/add" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> join a game</a> -->
-
-			<!-- <a href="/all" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-th-list"></span> All Characters</a> -->
 		</div>
+	</div>
+
+<div class="container">
+		<div class="row">
+
+			<div class="col-lg-12">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title"><strong>Please Login</strong></h3>
+
+					
+						<div class="panel-body">
+
+							<form id="login-form" role="form">
+							<div class="form-group">
+								<label for="">username</label>
+								<input type="text" class="form-control" id="username" placeholder="username">
+							</div>
+								
+							<div class="form-group">
+								<label for="">password</label>
+								<input type="text" class="form-control" id="login-password" placeholder="password">
+							</div>
+
+							<div class="text-right">
+							<button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span> Submit</button>
+							{{!-- <button><a href="view2.html">go</a></button> --}}			
+						</div>
+								
+							</form>
+							
+						</div>
+							<br>
+						
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+
+	<div class="container">
 		<div class="row">
 
 			<div class="col-lg-12">
@@ -35,38 +73,58 @@
 							</div>
 
 							<div class="panel-body">
-								<form  id="form" role="form">
+								<form  id="register-form" role="form">
 								
 									<div class="form-group">
-										<label for="">Name</label>
-										<input type="text" class="form-control" id="name" placeholder="">
+										<label for="">First Name</label>
+										<input type="text" class="form-control" id="first-name" placeholder="">
 									</div>
 
 									<div class="form-group">
-										<label for="">password</label>
-										<input type="text" class="form-control" id="password" placeholder="">
+										<label for="">Last Name</label>
+										<input type="text" class="form-control" id="last-name" placeholder="">
 									</div>
 
 									<div class="form-group">
-										<label for="">email</label>
-										<input type="text" class="form-control" id="email" placeholder="">
+										<label for="">Email</label>
+										<input type="email" class="form-control" id="email" placeholder="">
 									</div>
 
 									<div class="form-group">
-										<label for="">Phone# </label>
-										<input type="text" class="form-control" id="phone" placeholder="">
+										<label for="">Password</label>
+										<input type="password" class="form-control" id="password" placeholder="">
 									</div>
 
 									<div class="form-group">
-										<label for="">location</label>
-										<input type="text" class="form-control" id="location" placeholder="">
+										<label for="">Mobile Phone</label>
+										<input type="tel" class="form-control" id="phone" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label for="">Date of Birth</label>
+										<input type="date" class="form-control" id="birthday" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label for="">City</label>
+										<input type="text" class="form-control" id="city" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label for="">State</label>
+										<input type="text" class="form-control" id="state" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label for="">Zip Code</label>
+										<input type="number" class="form-control" id="zipcode" placeholder="">
 									</div>
 
 									<div class="text-right">
 										<button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span>Register</button>
 
 									</div>
-									
+
 								</form>
 							</div>
 						</div>
@@ -74,28 +132,8 @@
 				</div>
 			</div>
 		</div>
-		
-		{{!-- <div class="row">
 
-			<div class="col-lg-12">
-
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title"><strong>Already a member? Please Login</strong></h3>
-					</div>
-					<div class="panel-body">
-						<input type="text" id="character-search" class="form-control" placeholder="username">
-						<input type="text" id="character-search" class="form-control" placeholder="password">
-						<br>
-						<div class="text-right">
-							<button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span> Submit</button>
-							<button><a href="view2.html">go</a></button>
-							
-						</div>
-					</div>
-				</div>
-			</div>			
-		</div> --}}
+	
 
 
 
