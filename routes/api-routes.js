@@ -23,8 +23,7 @@ module.exports = function(app) {
             state: state,
             zip: zipcode
         }).then(function(results) {
-            console.log("Working")
-            // res.redirect("/start")
+            res.json(results);
         }).catch(function(err) {
             console.log(err);
         })
