@@ -10,7 +10,7 @@ module.exports = function(app) {
     })
 }
 
-// session storage
+// session storage with cookies?
 
 
 

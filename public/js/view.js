@@ -3,23 +3,7 @@ $(document).ready(function() {
 	
 	$("#register-form").submit(function(event) {
 		 event.preventDefault();
-		//console.log(event);
-
-		//console.log($( this ).serializeArray());
-
-		// build obj
-
-		// var name = $("#name").val().trim();
-
-		// var password = $("#password").val().trim();
-
-		// var email = $("#email").val().trim();
-
-		// var phone = $("#phone").val().trim();
-
-		// var location = $("#location").val().trim();
 	
-		// console.log(name);
 		var data = {
 			name: $("#name").val().trim(),
 			password: $("#password").val().trim(),
@@ -59,9 +43,17 @@ $(document).ready(function() {
 
 	});
 
+// this function will display on the page the output of the events that get created
+//will this be ajax coming from database?
+	function makeEvent(name, data1, data2, data3){
+	
+		$("#something").text(name);
+		$("#something").attr(data1);
+  
+	}
 
-
-
+// calling function, passing in the object info we create
+	makeEvent(blah, blah, blah);
 
 });
 
