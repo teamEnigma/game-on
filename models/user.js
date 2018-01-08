@@ -18,6 +18,7 @@ module.exports = function(sequelize, DataTypes) {
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			unique: true,
 			validate: {
 				len: [1, 80],
 				isEmail: true
@@ -52,7 +53,8 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [2, 2]
+				len: [2, 2],
+				isUppercase: true,
 			}
 		},
 		zip: {

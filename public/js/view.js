@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	//alert("hey");
-	
+		
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 	
