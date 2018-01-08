@@ -20,17 +20,17 @@
 
 							<form id="login-form" role="form">
 							<div class="form-group">
-								<label for="">username</label>
-								<input type="text" class="form-control" id="username" placeholder="username">
+								{{!-- <label for="">username</label> --}}
+								<input type="text" class="form-control" id="username" placeholder="username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'username'">
 							</div>
 								
 							<div class="form-group">
-								<label for="">password</label>
-								<input type="text" class="form-control" id="login-password" placeholder="password">
+								{{!-- <label for="">password</label> --}}
+								<input type="text" class="form-control" id="login-password" placeholder="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'">
 							</div>
 
 							<div class="text-right">
-							<button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span> Submit</button>
+							<button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-user"></span> Submit</button>
 							{{!-- <button><a href="view2.html">go</a></button> --}}			
 						</div>
 								
@@ -54,7 +54,7 @@
 					<div class="panel-heading">
 						<h3 class="panel-title"><strong>New? Please register</strong></h3>
 						<br>
-							<button data-toggle="collapse" data-target="#demo" type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span> Register</button>
+							<button data-toggle="collapse" data-target="#demo" type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-user"></span> Register</button>
 							{{!-- <button><a href="register.html">go</a></button> --}}
 					</div>
 				</div>
@@ -82,7 +82,7 @@
 
 									<div class="form-group">
 										<label for="">password</label>
-										<input type="text" class="form-control" id="password" placeholder="">
+										<input type="text" class="form-control" id="password" placeholder="" onfocus="this.placeholder = 'please use 3 to 12 characters'">
 									</div>
 
 									<div class="form-group">
@@ -101,7 +101,7 @@
 									</div>
 
 									<div class="text-right">
-										<button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span>Register</button>
+										<button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-user"></span> Register</button>
 
 									</div>
 

@@ -38,6 +38,11 @@ body {
   background: linear-gradient(to right, #99112E , #0E002E);
 }
 
+.event{
+  border: 1px solid white;
+  background-color: blue;
+}
+
 .jumbotron {
  background-color: black;
  font-family: 'Black Ops One', cursive;

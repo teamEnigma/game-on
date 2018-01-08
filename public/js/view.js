@@ -12,6 +12,8 @@ $(document).ready(function() {
 			location: $("#location").val().trim()
 		}
 
+		console.log(data);
+
 		$.ajax({
 		  type: "POST",
 		  url: "/api/register",
@@ -25,13 +27,15 @@ $(document).ready(function() {
 	$("#login-form").submit(function(event) {
 		event.preventDefault();
 
-		console.log("hey");
+		//console.log("hey");
 
 		var data = {
 			username: $("#username").val().trim(),
 			password: $("#login-password").val().trim(),
 			
 		}
+
+		console.log(data);
 
 		$.ajax({
 		  type: "GET",
@@ -45,15 +49,15 @@ $(document).ready(function() {
 
 // this function will display on the page the output of the events that get created
 //will this be ajax coming from database?
-	function makeEvent(name, data1, data2, data3){
+// 	function makeEvent(name, data1, data2, data3){
 	
-		$("#something").text(name);
-		$("#something").attr(data1);
+// 		$("#something").text(name);
+// 		$("#something").attr(data1);
   
-	}
+// 	}
 
-// calling function, passing in the object info we create
-	makeEvent(blah, blah, blah);
+// // calling function, passing in the object info we create
+// 	makeEvent(blah, blah, blah);
 
 });
 
