@@ -1,5 +1,18 @@
 $(document).ready(function() {
-		
+	$('.collapse').on('shown.bs.collapse', function (e) {
+		var id = $(e.target).prop('id');
+		// To scroll to panel-body (untested)
+		// var id = $(e.target).children('.panel-body').prop('id');
+		navigateToElement(id);
+	 });
+
+	function navigateToElement(id) {
+		$('html, body').animate({
+			scrollTop: $("#" + id).offset().top - 12
+		}, 400);
+	}
+	 
+
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 	
