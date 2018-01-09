@@ -47,6 +47,7 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				len: [1, 60]
 			}
+		},
         city: {
 			type: DataTypes.STRING,
 			allowNull: false,

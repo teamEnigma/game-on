@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/teamEnigma/game-on#readme",
   "dependencies": {
+    "@sendgrid/mail": "^6.1.4",
     "body-parser": "^1.18.2",
+    "emailjs": "^1.0.12",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.5.1",
