@@ -9,11 +9,20 @@ $(document).ready(function() {
 		navigateToElement(id);
 	 });
 
+	//find the console.log aljax call victor
+	$("#form-incomplete").html("That email is used bitch!")
+
 	function navigateToElement(id) {
 		$('html, body').animate({
 			scrollTop: $("#" + id).offset().top - 12
 		}, 400);
 	}
+
+	$("#joinjoin").click(function(){
+		$("#join-button").hide(1000);
+
+		$("#demo3").show();
+	})
 
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
@@ -92,4 +101,6 @@ $(document).ready(function() {
       });
 	})
 });
+
+//});
 
