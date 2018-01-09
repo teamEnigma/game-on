@@ -8,7 +8,13 @@ module.exports = function(app) {
     })
 
     app.get('/start', function(req, res) {
-        res.render("start")
+		if (req.session.name) {
+			var hbsObj = { userEmail: req.session.name };
+
+			res.render("start", hbsObj)
+		} else {
+			res.redirect('/');
+		}
 
 		// sgMail.setApiKey(process.env.SENDGRID_API_KEY='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');
 		
@@ -28,6 +34,11 @@ module.exports = function(app) {
 		// sgMail.send(msg);
 
 	})
+
+	app.get('/logout', function(req, res){
+		req.session.destroy();
+		res.redirect('/');
+	});
 
     // app.get('/games', function(req, res) {
     //     res.render("games")
