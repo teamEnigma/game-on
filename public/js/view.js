@@ -1,16 +1,12 @@
 
 $(document).ready(function() {
 
-
 	$('.collapse').on('shown.bs.collapse', function (e) {
 		var id = $(e.target).prop('id');
 		// To scroll to panel-body (untested)
 		// var id = $(e.target).children('.panel-body').prop('id');
 		navigateToElement(id);
 	 });
-
-	//find the console.log aljax call victor
-	$("#form-incomplete").html("That email is used bitch!")
 
 	function navigateToElement(id) {
 		$('html, body').animate({
@@ -45,7 +41,8 @@ $(document).ready(function() {
 			data: data
 		}).done(function(data) {
 			if (data === "duplicate email") {
-				console.log("This email has already been added")
+				$("#form-incomplete").html("That email has already been used!")
+
 			} else {
 				window.location.href = "/start"
 			}
@@ -55,16 +52,29 @@ $(document).ready(function() {
 	$("#login-form").submit(function(event) {
 		event.preventDefault();
 
-		var data = {
+		if ($("#username").val() == "") {
+			$("#user-error").html("<p> Please type in a username</p>");
+		} else if ($("#login-password").val() == "") {
+			$("#password-error").html("<p> Please type in a password</p>");
+		} else {
+
+			$("#user-error").hide();
+			$("#password-error").hide();
+
+			var data = {
 			username: $("#username").val().trim(),
 			password: $("#login-password").val().trim()	
-		}
+			}
 
-		$.ajax({
-		  type: "GET",
-		  url: "/api/login",
-		  data: data
-		});
+			console.log(data);
+
+			$.ajax({
+			  type: "GET",
+			  url: "/api/login",
+			  data: data
+			});
+
+		}
 
 	});
 
