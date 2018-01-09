@@ -1,4 +1,7 @@
+
 $(document).ready(function() {
+
+
 	$('.collapse').on('shown.bs.collapse', function (e) {
 		var id = $(e.target).prop('id');
 		// To scroll to panel-body (untested)
@@ -11,7 +14,6 @@ $(document).ready(function() {
 			scrollTop: $("#" + id).offset().top - 12
 		}, 400);
 	}
-	 
 
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
@@ -31,17 +33,13 @@ $(document).ready(function() {
 		$.ajax({
 		    type: "POST",
 		    url: "/api/register",
-			data: data,
-			dataType: "json"
-			// success : function(data) {              
-			// 	alert('Data: '+data);
-			// },
-			// error : function(request,error)
-			// {
-			// 	alert("Request: "+JSON.stringify(request));
-			// }
+			data: data
 		}).done(function(data) {
-			window.location.href = "/start"
+			if (data === "duplicate email") {
+				console.log("This email has already been added")
+			} else {
+				window.location.href = "/start"
+			}
 		});
 	});
 
@@ -57,23 +55,41 @@ $(document).ready(function() {
 		  type: "GET",
 		  url: "/api/login",
 		  data: data
-		  //success: success,
-		  //dataType: dataType
 		});
 
 	});
 
-// this function will display on the page the output of the events that get created
-//will this be ajax coming from database?
-	// function makeEvent(name, data1, data2, data3){
-	
-	// 	$("#something").text(name);
-	// 	$("#something").attr(data1);
-  
-	// }
+	$("#game-form").submit(function(event) {
+	event.preventDefault();
 
-// calling function, passing in the object info we create
-// 	makeEvent(blah, blah, blah);
+	var data = {
+		gameName: $("#game-name").val().trim(),
+		eventSport: $("#event-sport").val().trim(),
+		gameDate: $("#game-date").val().trim(),
+		gameTime: $("#game-time").val().trim(),
+		street: $("#street").val().trim(),
+		city: $("#city").val().trim(),
+		state: $("#state").val().trim(),
+        zipcode: $("#zipcode").val().trim(),
+        minBirthDate: $("#min-birthdate").val().trim(),
+		minPlayers: $("#min-players").val().trim(),
+		maxPlayers: $("#max-players").val().trim(),
+		gameFee: $("#game-fee").val().trim(),
+        equipment: $("#equipment").val().trim(),
+        skillLevel: $("#skill-level").val().trim(),
+		gender: $("#gender").val().trim(),
+		disability: $("#disability").val().trim(),
+    }
 
+    console.log(data);
+    
+    $.ajax({
+        type: "GET",
+        url: "/api/game",
+        data: data
+        //success: success,
+        //dataType: dataType
+      });
+	})
 });
 
