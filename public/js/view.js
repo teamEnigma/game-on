@@ -27,7 +27,7 @@ $(document).ready(function() {
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 	
-		var data = {
+		var registerData = {
 			firstName: $("#first-name").val().trim(),
 			lastName: $("#last-name").val().trim(),
 			email: $("#email").val().trim(),
@@ -42,7 +42,7 @@ $(document).ready(function() {
 		$.ajax({
 		    type: "POST",
 		    url: "/api/register",
-			data: data
+			data: registerData
 		}).done(function(data) {
 			if (data === "duplicate email") {
 				console.log("This email has already been added")
@@ -55,16 +55,20 @@ $(document).ready(function() {
 	$("#login-form").submit(function(event) {
 		event.preventDefault();
 
-		var data = {
-			username: $("#username").val().trim(),
+		var loginData = {
+			email: $("#login-email").val().trim(),
 			password: $("#login-password").val().trim()	
 		}
+
+		console.log(loginData)
 
 		$.ajax({
 		  type: "GET",
 		  url: "/api/login",
-		  data: data
-		});
+		  data: loginData
+		}).done(function(results) {
+			window.location.href = "/start"
+		})
 
 	});
 
