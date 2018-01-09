@@ -20,10 +20,6 @@ body {
   background: linear-gradient(to right, #99112E , #0E002E);
 }
 
-/*body {
-  background: linear-gradient(to right, black , grey);
-}*/
-
 .white-back {
   background-color: white;
   margin-left: 200px;
@@ -68,5 +64,3 @@ width: 100%;
     /*background-color: #4CAF50;*/
     color: black;
 }
-
-

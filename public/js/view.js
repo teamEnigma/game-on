@@ -18,19 +18,6 @@ $(document).ready(function() {
 		}, 400);
 	}
 
-	// $('.collapse').on('shown.bs.collapse', function (e) {
-	// 	var id = $(e.target).prop('id');
-	// 	// To scroll to panel-body (untested)
-	// 	// var id = $(e.target).children('.panel-body').prop('id');
-	// 	navigateToElement(id);
-	//  });
-
-	// function navigateToElement(id) {
-	// 	$('html, body').animate({
-	// 		scrollTop: $("#" + id).offset().top - 12
-	// 	}, 400);
-	// }
-
 	$("#joinjoin").click(function(){
 		$("#join-button").hide(1000);
 
@@ -52,22 +39,16 @@ $(document).ready(function() {
 			zipcode: $("#zipcode").val().trim(),
 		}
 
-		console.log(data);
-
 		$.ajax({
 		    type: "POST",
 		    url: "/api/register",
-			data: data,
-			dataType: "json"
-			// success : function(data) {              
-			// 	alert('Data: '+data);
-			// },
-			// error : function(request,error)
-			// {
-			// 	alert("Request: "+JSON.stringify(request));
-			// }
+			data: data
 		}).done(function(data) {
-			window.location.href = "/start"
+			if (data === "duplicate email") {
+				console.log("This email has already been added")
+			} else {
+				window.location.href = "/start"
+			}
 		});
 	});
 
@@ -79,14 +60,10 @@ $(document).ready(function() {
 			password: $("#login-password").val().trim()	
 		}
 
-		console.log(data);
-
 		$.ajax({
 		  type: "GET",
 		  url: "/api/login",
 		  data: data
-		  //success: success,
-		  //dataType: dataType
 		});
 
 	});
@@ -122,8 +99,8 @@ $(document).ready(function() {
         //success: success,
         //dataType: dataType
       });
-
+	})
 });
 
-});
+//});
 
