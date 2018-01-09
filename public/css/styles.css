@@ -1,38 +1,20 @@
-/*html { 
-  background: url("/images/fieldbackground.png") no-repeat center center fixed; 
+.jumbotron { 
+  background: url("/images/soccer.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}*/
+  color: black;
 
-/*HTML  CSS  Result
-EDIT ON*/
-/* header {
-  position: relative;
-  height: 300px;
-  background-image: linear-gradient(to right, #99112E , #0E002E);
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 100%,
-    0 calc(100% - 5vw)
-  );
-   change the calc height to a percentage height to get alternate responsive behavior
 }
 
-h1 {
-  margin: 0;
-  padding: 100px 0;
-  font: 44px "Arial";
-  color: white;
-  text-align: center;
+.panel-heading {
+  background: url("/images/soccer.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-
-section {
-  margin-top: -5vw;
-  background-image: linear-gradient(to right, #0E002E, #99112E);
-}*/
 
 body {
   background: linear-gradient(to right, #99112E , #0E002E);
@@ -44,22 +26,19 @@ body {
 }
 
 .jumbotron {
- background-color: black;
- font-family: 'Black Ops One', cursive;
+  /*background-color: black;*/
+  font-family: 'Black Ops One', cursive;
 }
-
-/*.login1 {
-	background-color: linear-gradient(to right, #99112E , #0E002E);
-}*/
 
 * {
   -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body {
-  margin:0;
+#newnew h3 {
+  /*color: blue;*/
+  letter-spacing: 3px;
 }
 
 

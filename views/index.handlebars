@@ -2,36 +2,30 @@
 	<div class="jumbotron">
 		<h1 class="text-center">Game ON!</h1>
 		<h3 class="text-center">Find a game and get notified</h3>
-		<hr>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><strong>Please Login</strong></h3>
+					<h3 class="panel-title text-center"><strong>Please Login</strong></h3>
 
 					<div class="panel-body">
 						<form id="login-form" role="form">
 							<div class="form-group">
-								{{!-- <label for="">username</label> --}}
-								<input type="text" class="form-control" id="username" placeholder="username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'username'">
+								{{!-- <label for="">Username</label> --}}
+								<input type="text" class="form-control" id="username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
 							</div>
 								
 							<div class="form-group">
-								{{!-- <label for="">password</label> --}}
-								<input type="text" class="form-control" id="login-password" placeholder="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'">
+								{{!-- <label for="">Password</label> --}}
+								<input type="text" class="form-control" id="login-password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
 
 							<div class="text-right">
-							<button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-user"></span> Submit</button>
-							{{!-- <button><a href="view2.html">go</a></button> --}}			
-						</div>
-								
-							</form>
-							
-						</div>
-							<br>
+								<button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-user"></span> Submit</button>			
+							</div>				
+						</form>							
 					</div>
 					<br>				
 				</div>
@@ -42,10 +36,10 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"><strong>New? Please register</strong></h3>
+				<div class="panel-heading" id="newnew">
+					<h3 class="panel-title text-center"><strong>New? Please register</strong></h3>
 					<br>
-						<button data-toggle="collapse" data-target="#demo" type="submit" class="btn btn-primary btn-md" id="register-btn"><span class="glyphicon glyphicon-search"></span>Register</button>
+						<button id="register-button" data-toggle="collapse" data-target="#demo" type="submit" class="btn btn-primary btn-md" id="register-btn"><span class="glyphicon glyphicon-user"></span> Register</button>
 				</div>
 			</div>
 		</div>			
@@ -59,11 +53,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<br>
-							<button data-toggle="collapse" data-target="#demo" type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-user"></span> Register</button>
-
-						<h3 class="panel-title"><strong>Register</strong></h3>
-
+						<h3 class="panel-title text-center"><strong>Register</strong></h3>
 					</div>
 
 					<div class="panel-body">
@@ -86,7 +76,7 @@
 
 							<div class="form-group">
 								<label for="">Password</label>
-								<input type="password" class="form-control" id="password" placeholder="" required minlength="5" maxlength="50" onfocus="this.placeholder = 'password requires at least 5 characters'">
+								<input type="password" class="form-control" id="password" placeholder="" required minlength="5" maxlength="50" onfocus="this.placeholder = 'Password must be at least 5 characters.'">
 							</div>
 
 							<div class="form-group">
@@ -114,9 +104,8 @@
 								<input type="text" class="form-control" id="zipcode" placeholder="" required pattern="[0-9]{5}" title="Five digit zip code">
 							</div>
 
-
 							<div class="text-right">
-								<button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span>Register</button>
+								<button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span> Register</button>
 
 							</div>
 
@@ -127,6 +116,9 @@
 		</div>
 	</div>
 </div>
+
+	
+
 
 	
 
