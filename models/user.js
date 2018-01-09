@@ -3,40 +3,23 @@ module.exports = function(sequelize, DataTypes) {
 	var Users = sequelize.define("Users", {
 		first_name: {
 			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 30]
-			}
+			allowNull: false
 		},
 		last_name: {
 			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 30]
-			}
+			allowNull: false
 		},
 		email: {
 			type: DataTypes.STRING,
-			allowNull: false,
-			unique: true,
-			validate: {
-				len: [1, 80],
-				isEmail: true
-			}
+			allowNull: false
 		},
 		password: {
 			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [5, 50]
-			}
+			allowNull: false
 		},
 		cell_phone: {
 			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [10, 10]
-			}
+			allowNull: false
 		},
 		birthdate: {
 			type: DataTypes.DATE,
@@ -44,25 +27,15 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		city: {
 			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 45]
-			}
+			allowNull: false
 		},
 		state: {
 			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [2, 2],
-				isUppercase: true,
-			}
+			allowNull: false
 		},
 		zip: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				len: [5, 5]
-			}
+			allowNull: false
 		}
 	});
 
