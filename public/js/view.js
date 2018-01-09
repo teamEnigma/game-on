@@ -15,10 +15,6 @@ $(document).ready(function() {
 		}, 400);
 	}
 
-	$("#register-button").click(function(){
-		$("#newnew").hide();
-	});
-
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 	
@@ -34,22 +30,16 @@ $(document).ready(function() {
 			zipcode: $("#zipcode").val().trim(),
 		}
 
-		console.log(data);
-
 		$.ajax({
 		    type: "POST",
 		    url: "/api/register",
-			data: data,
-			dataType: "json"
-			// success : function(data) {              
-			// 	alert('Data: '+data);
-			// },
-			// error : function(request,error)
-			// {
-			// 	alert("Request: "+JSON.stringify(request));
-			// }
+			data: data
 		}).done(function(data) {
-			window.location.href = "/start"
+			if (data === "duplicate email") {
+				console.log("This email has already been added")
+			} else {
+				window.location.href = "/start"
+			}
 		});
 	});
 
@@ -61,14 +51,10 @@ $(document).ready(function() {
 			password: $("#login-password").val().trim()	
 		}
 
-		console.log(data);
-
 		$.ajax({
 		  type: "GET",
 		  url: "/api/login",
 		  data: data
-		  //success: success,
-		  //dataType: dataType
 		});
 
 	});
@@ -104,6 +90,6 @@ $(document).ready(function() {
         //success: success,
         //dataType: dataType
       });
-
+	})
 });
 

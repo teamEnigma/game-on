@@ -12,20 +12,26 @@ module.exports = function(app) {
         var state = req.body.state.trim();
         var zipcode = req.body.zipcode.trim();
 
-        db.Users.create({
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            password: password,
-            cell_phone: phone,
-            birthdate: birthday,
-            city: city,
-            state: state,
-            zip: zipcode
+        db.Users.findOne({
+            where: {email: email}
         }).then(function(results) {
-            res.json(results);
-        }).catch(function(err) {
-            console.log(err);
+            if (results === null) {
+                db.Users.create({
+                    first_name: firstName,
+                    last_name: lastName,
+                    email: email,
+                    password: password,
+                    cell_phone: phone,
+                    birthdate: birthday,
+                    city: city,
+                    state: state,
+                    zip: zipcode
+                }).then(function(results) {
+                    res.send()
+                })
+            } else {
+                res.send("duplicate email")
+            }
         })
     })
 
@@ -34,10 +40,4 @@ module.exports = function(app) {
        var password = req.query.password;
     })
 }
-
-
-
-
-
-
 
