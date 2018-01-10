@@ -6,8 +6,9 @@
   background-size: cover;
   color: black;
   font-family: 'Black Ops One', cursive;
-  border-radius: 75%;
 }
+
+
 
 .panel-heading {
   background: url("/images/fieldbackground2.jpg") no-repeat center center fixed;

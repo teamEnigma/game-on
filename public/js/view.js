@@ -1,6 +1,4 @@
-
 $(document).ready(function() {
-
 	$('.collapse').on('shown.bs.collapse', function (e) {
 		var id = $(e.target).prop('id');
 		// To scroll to panel-body (untested)
@@ -23,7 +21,7 @@ $(document).ready(function() {
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 	
-		var data = {
+		var registerData = {
 			firstName: $("#first-name").val().trim(),
 			lastName: $("#last-name").val().trim(),
 			email: $("#email").val().trim(),
@@ -38,9 +36,10 @@ $(document).ready(function() {
 		$.ajax({
 		    type: "POST",
 		    url: "/api/register",
-			data: data
+			data: registerData
 		}).done(function(data) {
 			if (data === "duplicate email") {
+
 				$("#form-incomplete").html("That email has already been used!")
 
 			} else {
@@ -52,29 +51,30 @@ $(document).ready(function() {
 	$("#login-form").submit(function(event) {
 		event.preventDefault();
 
-		if ($("#username").val() == "") {
-			$("#user-error").html("<p> Please type in a username</p>");
+		if ($("#login-email").val() == "") {
+			$("#user-error").html("<p> Please type in email</p>");
 		} else if ($("#login-password").val() == "") {
 			$("#password-error").html("<p> Please type in a password</p>");
 		} else {
 
 			$("#user-error").hide();
 			$("#password-error").hide();
+		}
 
-			var data = {
-			username: $("#username").val().trim(),
+		var loginData = {
+			email: $("#login-email").val().trim(),
 			password: $("#login-password").val().trim()	
 			}
 
-			console.log(data);
+		console.log(loginData)
 
-			$.ajax({
-			  type: "GET",
-			  url: "/api/login",
-			  data: data
-			});
-
-		}
+		$.ajax({
+		  type: "GET",
+		  url: "/api/login",
+		  data: loginData
+		}).done(function(results) {
+			window.location.href = "/start"
+		})
 
 	});
 

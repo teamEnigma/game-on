@@ -36,8 +36,33 @@ module.exports = function(app) {
     })
 
     app.get('/api/login', function(req, res) {
-       var username = req.query.username;
-       var password = req.query.password;
+        var email = req.query.email;
+        var password = req.query.password;
+
+        db.Users.findOne({
+            where: {
+                email: email,
+                password: password
+            }
+        }).then(function(results) {
+            if (results === null) {
+            } else {
+                req.session.name = email;
+                res.send(req.session.name)
+            }
+        })
+    })
+
+    app.delete('/api/remove', function(req, res) {
+        var userEmail = req.body.email;
+
+        db.Users.destroy({
+            where: {
+                email: userEmail
+            }
+        }).then(function(results) {
+            res.send()
+        })
     })
 }
 

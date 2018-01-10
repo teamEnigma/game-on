@@ -14,13 +14,13 @@
 						<form id="login-form" role="form">
 							<div class="form-group">
 								{{!-- <label for="">Username</label> --}}
-								<input type="text" class="form-control" id="username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
-								<div id="user-error"> </div>
+								<input type="email" class="form-control" id="login-email" placeholder="Email" onfocus="this.placeholder=''" onblur="this.placeholder='Email'" required minlength="1" maxlength="80">
+								<div id="user-error"></div>
 							</div>
 								
 							<div class="form-group">
 								{{!-- <label for="">Password</label> --}}
-								<input type="text" class="form-control" id="login-password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="password" class="form-control" id="login-password" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" required minlength="5" maxlength="50">
 								<div id="password-error"></div>
 							</div>
 
