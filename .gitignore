@@ -1,4 +1,5 @@
 node_modules
 .DS_Store
 config/config.json
+config/session.json
 *.json
