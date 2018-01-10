@@ -3,8 +3,12 @@ var db = require("../models");
 // sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
 
 module.exports = function(app) {
-    app.get('/', function(req, res) {
-        res.render("index")
+    app.get('/index', function(req, res) {
+		if (req.session.name) {
+			res.redirect('/start')
+		} else {
+			res.render("index")
+		}
     })
 
     app.get('/start', function(req, res) {
@@ -40,8 +44,7 @@ module.exports = function(app) {
 		res.redirect('/');
 	});
 
-    // app.get('/games', function(req, res) {
-    //     res.render("games")
-    // })
-    
+    app.get('/*', function(req, res) {
+		res.redirect('/index')
+    })  
 }
