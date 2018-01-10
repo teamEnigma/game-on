@@ -46,6 +46,7 @@ module.exports = function(app) {
             }
         }).then(function(results) {
             if (results === null) {
+                res.send("incorrect login")
             } else {
                 req.session.name = email;
                 res.send(req.session.name)
