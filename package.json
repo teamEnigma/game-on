@@ -21,6 +21,7 @@
     "@sendgrid/mail": "^6.1.4",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
     "emailjs": "^1.0.12",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",

@@ -2,15 +2,15 @@ var express = require("express");
 var cookieParser = require('cookie-parser');
 var bodyParser = require("body-parser");
 var session = require('express-session');
-var fs = require("fs");
+
+// Read and set environment variables
+require("dotenv").config();
 
 // Initialize Express
 var app = express();
 app.use(cookieParser());
 
-var key = JSON.parse(fs.readFileSync('./config/session.json', 'utf8')).key;
-
-app.use(session({secret: key}))
+app.use(session({secret: process.env.SESSION_SECRET}))
 var PORT = process.env.PORT || 3000;
 
 // Sequelize database import
