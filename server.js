@@ -1,17 +1,17 @@
 var express = require("express");
 var cookieParser = require('cookie-parser');
 var bodyParser = require("body-parser");
-var session = require('express-session');
+var session = require("express-session");
 
 // Read and set environment variables
 require("dotenv").config();
 
 // Initialize Express
 var app = express();
-app.use(cookieParser());
-
-app.use(session({secret: process.env.SESSION_SECRET}))
 var PORT = process.env.PORT || 3000;
+
+app.use(cookieParser());
+app.use(session({secret: process.env.SESSION_SECRET}))
 
 // Sequelize database import
 var db = require("./models");
