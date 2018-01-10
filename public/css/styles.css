@@ -6,6 +6,7 @@
   background-size: cover;
   color: black;
   font-family: 'Black Ops One', cursive;
+  border-radius: 75%;
 }
 
 .panel-heading {
