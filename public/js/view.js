@@ -54,8 +54,6 @@ $(document).ready(function() {
 			password: $("#login-password").val().trim()	
 		}
 
-		console.log(loginData)
-
 		$.ajax({
 		  type: "GET",
 		  url: "/api/login",
