@@ -39,7 +39,7 @@ $(document).ready(function() {
 			data: registerData
 		}).done(function(data) {
 			if (data === "duplicate email") {
-				$("#form-incomplete").html("That email is used bitch!")
+				$("#form-incomplete").html("Please use another email address")
 			} else {
 				window.location.href = "/start"
 			}
@@ -61,7 +61,11 @@ $(document).ready(function() {
 		  url: "/api/login",
 		  data: loginData
 		}).done(function(results) {
-			window.location.href = "/start"
+			if (results === "incorrect login") {
+				$("#login-incomplete").html("Your login is invalid")
+			} else {
+				window.location.href = "/start"
+			}
 		})
 
 	});
