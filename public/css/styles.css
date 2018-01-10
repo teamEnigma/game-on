@@ -1,3 +1,66 @@
+.jumbotron { 
+  background: url("/images/soccer.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: black;
+
+}
+
+.panel-heading {
+  background: url("/images/soccer.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
-	background-color: blue;
+  background: linear-gradient(to right, #99112E , #0E002E);
+}
+
+.white-back {
+  background-color: white;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.event{
+  border: 1px solid white;
+  background-color: blue;
+}
+
+.jumbotron {
+  /*background-color: black;*/
+  font-family: 'Black Ops One', cursive;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#events-table {
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+
+#events-table td, #events-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#events-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#events-table tr:hover {background-color: #ddd;}
+
+#events-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    /*background-color: #4CAF50;*/
+    color: black;
 }

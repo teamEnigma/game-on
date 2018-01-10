@@ -1,9 +1,17 @@
-var express = require("express")
+var express = require("express");
+var cookieParser = require('cookie-parser');
 var bodyParser = require("body-parser");
+var session = require("express-session");
+
+// Read and set environment variables
+require("dotenv").config();
 
 // Initialize Express
 var app = express();
 var PORT = process.env.PORT || 3000;
+
+app.use(cookieParser());
+app.use(session({secret: process.env.SESSION_SECRET}))
 
 // Sequelize database import
 var db = require("./models");
@@ -24,6 +32,8 @@ app.set("view engine", "handlebars");
 // Initialize the routing file
 app.use(express.static("public"));
 require("./routes/api-routes.js")(app);
+
+require("./routes/html-routes.js")(app);
 
 // Start the server
 db.sequelize.sync().then(function() {
