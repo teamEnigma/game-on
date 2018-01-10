@@ -2,11 +2,15 @@ var express = require("express");
 var cookieParser = require('cookie-parser');
 var bodyParser = require("body-parser");
 var session = require('express-session');
+var fs = require("fs");
 
 // Initialize Express
 var app = express();
 app.use(cookieParser());
-app.use(session({secret: "the fountain of youth"}))
+
+var key = JSON.parse(fs.readFileSync('./config/session.json', 'utf8')).key;
+
+app.use(session({secret: key}))
 var PORT = process.env.PORT || 3000;
 
 // Sequelize database import
