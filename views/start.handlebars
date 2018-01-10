@@ -134,104 +134,103 @@
 			</div>			
 		</div>
 	</div>
-	
 
+	<div id="demo3" class="collapse">
+		<div class="row">
+			<div class="col-lg-12">
+		    	<div class="panel panel-default">
+		        	<div class="panel-heading"><h3>GAMES</h3></div>
+		            	<div class="panel-body">
+							<table class="table table-condensed" style="border-collapse:collapse;">
 
-<div id="demo3" class="collapse">
-	<div class="row">
-	<div class="col-lg-12">
-    	<div class="panel panel-default">
-        	<div class="panel-heading"><h3>GAMES</h3></div>
-            	<div class="panel-body">
-					<table class="table table-condensed" style="border-collapse:collapse;">
+							    <thead>
+							        <tr><th>&nbsp;</th>
+							            <th id="event-head">Event</th>
+							            <th id="event-description">Description</th>
+							            <th id="event-admin">Created by</th>
+							            <th id="event-location">Location</th>
+							            <th id="event-status">Status</th>
+							        </tr>
+							    </thead>
 
-					    <thead>
-					        <tr><th>&nbsp;</th>
-					            <th>Event</th>
-					            <th>Description</th>
-					            <th>Created by</th>
-					            <th>Location</th>
-					            <th id="status">Status</th>
-					        </tr>
-					    </thead>
+							    <tbody>
+							        <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+							                  <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+							            <td>Hockey</td>
+							            <td>7 on 7</td>
+							            <td>richdude207</td>
+							            <td>Chicago, IL</td>
+							          	<td>created</td>
 
-					    <tbody>
-					        <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-					                  <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-					            <td>Hockey</td>
-					            <td>7 on 7</td>
-					            <td>richdude207</td>
-					            <td>Chicago, IL</td>
-					          	<td>created</td>
+							          	<td id="event-head"></td>
+							            <td id="event-description"></td>
+							            <td id="event-admin"></td>
+							            <td id="event-location"></td>
+							            <td id="event-status"></td>
 
-					        </tr>
-					        <tr>
-					            <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo1"> 
-					              <table class="table table-striped">
-					                      <thead>
+							        </tr>
+							        <tr>
+							            <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo1"> 
+							              	<table class="table table-striped">
+							                    <thead>
 
-					                        <tr>
-					                        	<th>Access Key</th>
-					                        	<th>Secret Key</th>
-					                        	<th>Status </th>
-					                        	<th> Created</th>
-					                        	<th> Expires</th>
-					                        	<th>Actions</th></tr>
-					                      </thead>
+							                        <tr>
+							                        	<th>Access Key</th>
+							                        	<th>Secret Key</th>
+							                        	<th>Status </th>
+							                        	<th> Created</th>
+							                        	<th> Expires</th>
+							                        	<th>Actions</th>
+							                        </tr>
+							                    </thead>
 
-					                      <tbody>
-					                        <tr>
-					                        	<td>access-key-1</td>
-					                        	<td>secretKey-1</td>
-					                        	<td>Status</td>
-					                        	<td>some date</td>
-					                        	<td>some date</td>
-					                        	<td><a href="#" class="btn btn-default btn-sm">
-					                  <i class="glyphicon glyphicon-cog"></i> Join</a></td>
-					              			</tr>
+							                    <tbody>
+							                        <tr>
+							                        	<td>access-key-1</td>
+							                        	<td>secretKey-1</td>
+							                        	<td>Status</td>
+							                        	<td>some date</td>
+							                        	<td>some date</td>
+							                        	<td><a href="#" class="btn btn-default btn-sm">
+							                  			<i class="glyphicon glyphicon-cog"></i> Join</a></td>
+							              			</tr>
 
-					                      </tbody>
-					               	</table>
-					              
-					              </div> </td>
-					        </tr>
-					        <tr data-toggle="collapse" data-target="#demotwo" class="accordion-toggle">
-					                <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-					                <td>Football</td>
-					            	<td>3 on 3</td>
-					            	<td>dantheman101</td>
-					            	<td>Antioch, IL</td>
-					          		<td>created</td>
-					        </tr>
-					        <tr>
-					            <td colspan="6" class="hiddenRow"><div id="demotwo" class="accordian-body collapse">Demo2</div></td>
-					        </tr>
-					        <tr data-toggle="collapse" data-target="#demothree" class="accordion-toggle">
-					            <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-					            <td>OBS Name</td>
-					            <td>OBS Description</td>
-					            <td>hpcloud</td>
-					            <td>nova</td>
-					          <td> created</td>
-					        </tr>
-					        <tr>
-					            <td colspan="6" class="hiddenRow"><div id="demothree" class="accordian-body collapse">Demo3</div></td>
-					        </tr>
-					    </tbody>
-					</table>
-            </div>
-        </div> 
-    </div>
-
-					{{!-- </div>
-				</div>
-			</div>			
+							                    </tbody>
+							               	</table>
+							              
+							              {{!-- </div> --}}
+							          	</td>
+							        </tr>
+							        <tr data-toggle="collapse" data-target="#demotwo" class="accordion-toggle">
+							                <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+							                <td>Football</td>
+							            	<td>3 on 3</td>
+							            	<td>dantheman101</td>
+							            	<td>Antioch, IL</td>
+							          		<td>created</td>
+							        </tr>
+							        <tr>
+							            <td colspan="6" class="hiddenRow"><div id="demotwo" class="accordian-body collapse">Demo2</div></td>
+							        </tr>
+							        <tr data-toggle="collapse" data-target="#demothree" class="accordion-toggle">
+							            <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+							            <td>OBS Name</td>
+							            <td>OBS Description</td>
+							            <td>hpcloud</td>
+							            <td>nova</td>
+							          <td> created</td>
+							        </tr>
+							        <tr>
+							            <td colspan="6" class="hiddenRow"><div id="demothree" class="accordian-body collapse">Demo3</div></td>
+							        </tr>
+							    </tbody>
+							</table>
+		            	</div>
+		        	</div> 
+		    	</div>
+			</div>
 		</div>
-	</div> --}}
-{{!-- </div> --}}
-
-
-
+	</div>			
 </div>
 
 

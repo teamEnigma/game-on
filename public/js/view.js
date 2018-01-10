@@ -51,16 +51,6 @@ $(document).ready(function() {
 	$("#login-form").submit(function(event) {
 		event.preventDefault();
 
-		if ($("#login-email").val() == "") {
-			$("#user-error").html("<p> Please type in email</p>");
-		} else if ($("#login-password").val() == "") {
-			$("#password-error").html("<p> Please type in a password</p>");
-		} else {
-
-			$("#user-error").hide();
-			$("#password-error").hide();
-		}
-
 		var loginData = {
 			email: $("#login-email").val().trim(),
 			password: $("#login-password").val().trim()	
@@ -80,6 +70,19 @@ $(document).ready(function() {
 
 	$("#game-form").submit(function(event) {
 	event.preventDefault();
+
+	// // if the data is all entered correctly and goes to the database
+	// if () {
+
+	// 	$("#event-head").append(data.eventSport);
+	// 	// etc etc
+	// //the data values will go to the games table
+
+	// } else {
+
+	// // a message will appear - "something is missing"
+
+	// }
 
 	var data = {
 		gameName: $("#game-name").val().trim(),
