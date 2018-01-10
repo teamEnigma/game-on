@@ -52,5 +52,17 @@ module.exports = function(app) {
             }
         })
     })
+
+    app.delete('/api/remove', function(req, res) {
+        var userEmail = req.body.email;
+
+        db.Users.destroy({
+            where: {
+                email: userEmail
+            }
+        }).then(function(results) {
+            res.send()
+        })
+    })
 }
 
