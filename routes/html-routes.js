@@ -13,9 +13,22 @@ module.exports = function(app) {
 
     app.get('/start', function(req, res) {
 		if (req.session.name) {
-			var hbsObj = { userEmail: req.session.name };
+			var email = req.session.name
 
-			res.render("start", hbsObj)
+			db.Users.findOne({
+				where: {
+					email: email
+				}
+			}).then(function(results) {
+				var name = results.first_name
+			
+				var hbsObj = {
+					userEmail: email,
+					userName: name
+				};
+
+				res.render("start", hbsObj)
+			})
 		} else {
 			res.redirect('/');
 		}
