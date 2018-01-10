@@ -8,10 +8,11 @@ require("dotenv").config();
 
 // Initialize Express
 var app = express();
+
 app.use(cookieParser());
+var PORT = process.env.PORT || 3000;
 
 app.use(session({secret: process.env.SESSION_SECRET}))
-var PORT = process.env.PORT || 3000;
 
 // Sequelize database import
 var db = require("./models");
