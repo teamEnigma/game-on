@@ -1,4 +1,4 @@
-var db = require("../models");
+var db = require("../models/");
 
 module.exports = function(app) {
     app.post('/api/register', function(req, res) {
@@ -12,7 +12,7 @@ module.exports = function(app) {
         var state = req.body.state.trim();
         var zipcode = req.body.zipcode.trim();
 
-        db.Users.findOne({
+        db.User.findOne({
             where: {email: email}
         }).then(function(results) {
             if (results === null) {

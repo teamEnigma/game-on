@@ -1,91 +1,82 @@
 module.exports = function(sequelize, DataTypes) {
 
-	var Event = sequelize.define("Event", {
-		game_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 140]
-			}
+	const Event = sequelize.define("Event", {
+		game_id: {
+			type: DataTypes.INTEGER,
+			primaryKey: true,
+			autoIncrement: true
+		},
+		event_name: {
+			type: DataTypes.STRING(80),
+			allowNull: false
+		},
+		event_time: {
+			type: DataTypes.DATE,
+			allowNull: false
+		},
+		event_date: {
+			type: DataTypes.DATEONLY,
+			allowNull: false
 		},
 		min_players: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				len: [1, 2]
-			}
+			allowNull: false
 		},
 		max_players: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				len: [1, 3]
-			}
+			allowNull: false
 		},
-		game_date: {
-			type: DataTypes.DATE,
-			allowNull: false,
-        },
-        game_time: {
-			type: DataTypes.TIME,
-			allowNull: false,
-        },
-        game_fee: {
-			type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-				len: [1, 3]
-			}
-        },
-        min_birthdate: {
-			type: DataTypes.DATE,
-			allowNull: false,
-        },
-        address: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 60]
-			}
+		equipment_binary: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false
 		},
-        city: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 45]
-			}
+		disability_binary: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false
+		},
+		min_birthdate: {
+			type: DataTypes.DATEONLY,
+			allowNull: false
+		},
+		game_fee: {
+			type: DataTypes.DECIMAL(10,2),
+			allowNull: false
+		},
+		game_on_boolean: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false
+		},
+		city: {
+			type: DataTypes.STRING(45),
+			allowNull: false
 		},
 		state: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [2, 2]
-			}
+			type: DataTypes.INTEGER,
+			allowNull: false
 		},
 		zip: {
+			type: DataTypes.STRING(5),
+			allowNull: false
+		},
+		gender_id: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				len: [5, 5]
+			allowNull: false
+		},
+		sport_type_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		skill_level_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		owner_id: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: User,
+				key: 'user_id'
 			}
-        },
-        equipment: {
-			type: DataTypes.BOOLEAN,
-			allowNull: false,
-            defaultValue: false,
-        },
-        disability: {
-			type: DataTypes.BOOLEAN,
-			allowNull: false,
-            defaultValue: false,
-        },
-        skill_level_code: {
-			type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-				len: [1, 30]
-			}
-        },
+		}
 	});
 
 	return Event
