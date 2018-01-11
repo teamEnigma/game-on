@@ -2,11 +2,11 @@ module.exports = function(sequelize, DataTypes) {
 	//establish the Event table in the MySQL database w/ Sequelize
 	const Event = sequelize.define("Event", {
 		//primary game identifier
-		game_id: {
-			type: DataTypes.INTEGER,
-			primaryKey: true,
-			autoIncrement: true
-		},
+		// game_id: {
+		// 	type: DataTypes.INTEGER,
+		// 	primaryKey: true,
+		// 	autoIncrement: true
+		// },
 		//chosen name of event
 		event_name: {
 			type: DataTypes.STRING(80),

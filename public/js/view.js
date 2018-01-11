@@ -20,6 +20,16 @@ $(document).ready(function() {
 
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
+
+		var genderStr = $("#gender").val().trim();
+
+		if (genderStr === "Male") {
+			var genderInt = 1
+		} else if (genderStr === "Female") {
+			var genderInt = 2
+		} else if (genderStr === "Coed") {
+			var genderInt = 3
+		}
 	
 		var registerData = {
 			firstName: $("#first-name").val().trim(),
@@ -27,6 +37,7 @@ $(document).ready(function() {
 			email: $("#email").val().trim(),
 			password: $("#password").val().trim(),
 			phone: $("#phone").val().trim(),
+			gender: genderInt,
 			birthday: $("#birthday").val().trim(),
 			city: $("#city").val().trim(),
 			state: $("#state").val().trim(),
@@ -56,7 +67,7 @@ $(document).ready(function() {
 			}
 
 		$.ajax({
-		  type: "GET",
+		  type: "POST",
 		  url: "/api/login",
 		  data: loginData
 		}).done(function(results) {
