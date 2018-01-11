@@ -65,5 +65,24 @@ module.exports = function(app) {
             res.send()
         })
     })
+
+    app.post('/api/game', function(req, res) {
+        var gameName = req.body.gameName.trim();
+        var eventSport = req.body.eventSport.trim();
+        var gameDate = req.body.gameDate.trim();
+        var gameTime = req.body.gameTime.trim();
+        var street = req.body.street.trim();
+        var city = req.body.city.trim();
+        var state = req.body.state.trim();
+        var zipcode = req.body.zipcode.trim();
+        var minBirthDate = req.body.minBirthDate.trim();
+        var minPlayers = req.body.minPlayers.trim();
+        var maxPlayers = req.body.maxPlayers.trim();
+        var gameFee = req.body.gameFee.trim();
+        var equipment = req.body.equipment.trim();
+        var skillLevel = req.body.skillLevel.trim();
+        var gender = req.body.gender.trim();
+        var disability = req.body.disability.trim();
+    })
 }
 
