@@ -5,7 +5,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title text-center"><strong>Please Login</strong></h3>
@@ -15,11 +15,13 @@
 							<div class="form-group">
 								{{!-- <label for="">Username</label> --}}
 								<input type="email" class="form-control" id="login-email" placeholder="Email" onfocus="this.placeholder=''" onblur="this.placeholder='Email'" required minlength="1" maxlength="80">
+								<div id="user-error"></div>
 							</div>
 								
 							<div class="form-group">
 								{{!-- <label for="">Password</label> --}}
 								<input type="password" class="form-control" id="login-password" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" required minlength="5" maxlength="50">
+								<div id="password-error"></div>
 							</div>
 							<p id="login-incomplete"></p>
 
@@ -31,25 +33,23 @@
 					<br>				
 				</div>
 			</div>
-		</div>			
-	</div>
+		</div>
 
-	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-6">
 			<div class="panel panel-default">
-
 				<div class="panel-heading">
 					<h3 class="panel-title text-center"><strong>New? Please register</strong></h3>
 					<br>
 						<button id="register-button" data-toggle="collapse" data-target="#demo" type="submit" class="btn btn-primary btn-md" id="register-btn"><span class="glyphicon glyphicon-user"></span> Register</button>
 				</div>
 			</div>
-		</div>			
+		</div>		
 	</div>
 
 	<div id="demo" class="collapse">
 
 		<div class="row">
+			<div class="col-lg-12"></div>
 
 			<div class="col-lg-12">
 
