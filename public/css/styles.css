@@ -1,5 +1,5 @@
 .jumbotron { 
-  background: url("/images/fieldbackground2.jpg") no-repeat center center fixed; 
+  background: url("/images/soccer.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -8,24 +8,36 @@
   font-family: 'Black Ops One', cursive;
 }
 
+.jumbotron h1 {
+  font-size: 70px;
+  margin-top: -20px;
+}
 
+#signed-in-as {
+  font-size: 18px;
+  margin-top: -30px;
+}
+
+#logout-button {
+  margin-top: -18px;
+  font-size: 15px;
+}
 
 .panel-heading {
-  background: url("/images/fieldbackground2.jpg") no-repeat center center fixed;
+  background: url("/images/soccer.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-/*body {
-  background: linear-gradient(to right, #99112E , #0E002E);
-}*/
-
 body {
-  background: linear-gradient(to right, red , blue);
+  background: linear-gradient(to right, #99112E , #0E002E);
 }
 
+/*body {
+  background: linear-gradient(to right, red , blue);
+}*/
 
 /* include this if needed for the register form*/
 .white-back {

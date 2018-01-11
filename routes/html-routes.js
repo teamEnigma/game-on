@@ -1,17 +1,38 @@
 var db = require("../models");
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
+const sgMail = require('@sendgrid/mail');
+sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
 
 module.exports = function(app) {
-    app.get('/', function(req, res) {
-        res.render("index")
+    app.get('/index', function(req, res) {
+		if (req.session.name) {
+			res.redirect('/start')
+		} else {
+			res.render("index")
+		}
     })
+
+    var stateArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
+
 
     app.get('/start', function(req, res) {
 		if (req.session.name) {
-			var hbsObj = { userEmail: req.session.name };
+			var email = req.session.name
 
-			res.render("start", hbsObj)
+			db.Users.findOne({
+				where: {
+					email: email
+				}
+			}).then(function(results) {
+				var name = results.first_name
+			
+				var hbsObj = {
+					userEmail: email,
+					userName: name,
+					inputState: stateArray
+				};
+
+				res.render("start", hbsObj)
+			})
 		} else {
 			res.redirect('/');
 		}
@@ -36,12 +57,12 @@ module.exports = function(app) {
 	})
 
 	app.get('/logout', function(req, res){
+
 		req.session.destroy();
 		res.redirect('/');
 	});
 
-    // app.get('/games', function(req, res) {
-    //     res.render("games")
-    // })
-    
+    app.get('/*', function(req, res) {
+		res.redirect('/index')
+    })  
 }
