@@ -56,7 +56,7 @@ $(document).ready(function() {
 			}
 
 		$.ajax({
-		  type: "GET",
+		  type: "POST",
 		  url: "/api/login",
 		  data: loginData
 		}).done(function(results) {

@@ -35,9 +35,9 @@ module.exports = function(app) {
         })
     })
 
-    app.get('/api/login', function(req, res) {
-        var email = req.query.email;
-        var password = req.query.password;
+    app.post('/api/login', function(req, res) {
+        var email = req.body.email;
+        var password = req.body.password;
 
         db.Users.findOne({
             where: {
@@ -83,6 +83,8 @@ module.exports = function(app) {
         var skillLevel = req.body.skillLevel.trim();
         var gender = req.body.gender.trim();
         var disability = req.body.disability.trim();
+
+        res.send()
     })
 }
 
