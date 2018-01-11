@@ -55,16 +55,6 @@ module.exports = function(sequelize, DataTypes) {
 		zip: { 
 			type: DataTypes.STRING(5),
 			allowNull: false
-		},
-		//token for email verification
-		token: {
-			type: DataTypes.STRING(10),
-			allowNull: false
-		},
-		//boolean for confirmation of email verification
-		emailConfirmed: {
-			type: DataTypes.BOOLEAN,
-			allowNull: false
 		}
 	});
 
