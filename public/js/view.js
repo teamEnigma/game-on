@@ -1,7 +1,4 @@
-
 $(document).ready(function() {
-
-
 	$('.collapse').on('shown.bs.collapse', function (e) {
 		var id = $(e.target).prop('id');
 		// To scroll to panel-body (untested)
@@ -15,10 +12,16 @@ $(document).ready(function() {
 		}, 400);
 	}
 
+	// $("#joinjoin").click(function(){
+	// 	$("#join-button").hide(1000);
+
+	// 	$("#demo3").show();
+	// })
+
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 	
-		var data = {
+		var registerData = {
 			firstName: $("#first-name").val().trim(),
 			lastName: $("#last-name").val().trim(),
 			email: $("#email").val().trim(),
@@ -33,10 +36,10 @@ $(document).ready(function() {
 		$.ajax({
 		    type: "POST",
 		    url: "/api/register",
-			data: data
+			data: registerData
 		}).done(function(data) {
 			if (data === "duplicate email") {
-				console.log("This email has already been added")
+				$("#form-incomplete").html("Please use another email address")
 			} else {
 				window.location.href = "/start"
 			}
@@ -46,16 +49,22 @@ $(document).ready(function() {
 	$("#login-form").submit(function(event) {
 		event.preventDefault();
 
-		var data = {
-			username: $("#username").val().trim(),
+		var loginData = {
+			email: $("#login-email").val().trim(),
 			password: $("#login-password").val().trim()	
 		}
 
 		$.ajax({
 		  type: "GET",
 		  url: "/api/login",
-		  data: data
-		});
+		  data: loginData
+		}).done(function(results) {
+			if (results === "incorrect login") {
+				$("#login-incomplete").html("Your login is invalid")
+			} else {
+				window.location.href = "/start"
+			}
+		})
 
 	});
 
@@ -92,4 +101,6 @@ $(document).ready(function() {
       });
 	})
 });
+
+//});
 
