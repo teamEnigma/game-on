@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING(30),
 			allowNull: false
 		},
+		//user gender from a dropdown array
 		user_gender: {
 			type: DataTypes.INTEGER,
 			allowNull: false
@@ -40,7 +41,7 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATEONLY,
 			allowNull: false
 		},
-		//city
+		//city where the user is located
 		city: {
 			type: DataTypes.STRING(45),
 			allowNull: false
@@ -54,15 +55,18 @@ module.exports = function(sequelize, DataTypes) {
 		zip: { 
 			type: DataTypes.STRING(5),
 			allowNull: false
+		},
+		//token for email verification
+		token: {
+			type: DataTypes.STRING(10),
+			allowNull: false
+		},
+		//boolean for confirmation of email verification
+		emailConfirmed: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false
 		}
 	});
-
-	//delete games tied to owner ids that have been deleted
-	User.associate = function(models) {
-		User.hasMany(models.Event, {
-			onDelete: "cascade"
-		})
-	};
 
 	return User
 
