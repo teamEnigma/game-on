@@ -2,12 +2,11 @@ module.exports = function(sequelize, DataTypes) {
 	//establish the User table in the MySQL database w/ Sequelize
 	const User = sequelize.define("User", {
 		//primary identifier
-		user_id: {
-		 	type: DataTypes.INTEGER,
-		 	primaryKey: true,
-			autoIncrement: true,
-			allowNull: false
-		},
+		// user_id: {
+		// 	type: DataTypes.INTEGER,
+		// 	primaryKey: true,
+		// 	autoIncrement: true
+		// },
 		//first name
 		first_name: {
 			type: DataTypes.STRING(30),
