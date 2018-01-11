@@ -1,6 +1,6 @@
 var db = require("../models");
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
+const sgMail = require('@sendgrid/mail');
+sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
 
 module.exports = function(app) {
     app.get('/index', function(req, res) {
@@ -10,6 +10,9 @@ module.exports = function(app) {
 			res.render("index")
 		}
     })
+
+    var stateArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
+
 
     app.get('/start', function(req, res) {
 		if (req.session.name) {
@@ -24,7 +27,8 @@ module.exports = function(app) {
 			
 				var hbsObj = {
 					userEmail: email,
-					userName: name
+					userName: name,
+					inputState: stateArray
 				};
 
 				res.render("start", hbsObj)
@@ -53,6 +57,7 @@ module.exports = function(app) {
 	})
 
 	app.get('/logout', function(req, res){
+
 		req.session.destroy();
 		res.redirect('/');
 	});
