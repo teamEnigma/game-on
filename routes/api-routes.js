@@ -7,6 +7,7 @@ module.exports = function(app) {
         var email = req.body.email.trim();
         var password = req.body.password.trim();
         var phone = req.body.phone.trim();
+        var gender = req.body.gender.trim();
         var birthday = req.body.birthday.trim();
         var city = req.body.city.trim();
         var state = req.body.state.trim();
@@ -16,12 +17,13 @@ module.exports = function(app) {
             where: {email: email}
         }).then(function(results) {
             if (results === null) {
-                db.Users.create({
+                db.User.create({
                     first_name: firstName,
                     last_name: lastName,
                     email: email,
                     password: password,
-                    cell_phone: phone,
+                    mobile_number: phone,
+                    user_gender: gender,
                     birthdate: birthday,
                     city: city,
                     state: state,
@@ -39,7 +41,7 @@ module.exports = function(app) {
         var email = req.body.email;
         var password = req.body.password;
 
-        db.Users.findOne({
+        db.User.findOne({
             where: {
                 email: email,
                 password: password
@@ -57,7 +59,7 @@ module.exports = function(app) {
     app.delete('/api/remove', function(req, res) {
         var userEmail = req.body.email;
 
-        db.Users.destroy({
+        db.User.destroy({
             where: {
                 email: userEmail
             }

@@ -2,10 +2,11 @@ module.exports = function(sequelize, DataTypes) {
 	//establish the User table in the MySQL database w/ Sequelize
 	const User = sequelize.define("User", {
 		//primary identifier
-		user_id: {
-			type: DataTypes.INTEGER,
-			primaryKey: true
-		},
+		// user_id: {
+		// 	type: DataTypes.INTEGER,
+		// 	primaryKey: true,
+		// 	autoIncrement: true
+		// },
 		//first name
 		first_name: {
 			type: DataTypes.STRING(30),
@@ -48,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		//state chosen from array-based dropdown
 		state: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.CHAR(2),
 			allowNull: false
 		},
 		//five digit zip code
