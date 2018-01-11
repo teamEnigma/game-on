@@ -13,7 +13,6 @@ $(document).ready(function() {
 	}
 
 	$("#joinjoin").click(function(){
-		$("#join-button").hide(1000);
 
 		$("#demo3").show();
 	})
@@ -71,19 +70,6 @@ $(document).ready(function() {
 
 	$("#game-form").submit(function(event) {
 		event.preventDefault();
-
-	// // if the data is all entered correctly and goes to the database
-	// if () {
-
-	// 	$("#event-head").append(data.eventSport);
-	// 	// etc etc
-	// //the data values will go to the games table
-
-	// } else {
-
-	// // a message will appear - "something is missing"
-
-	// }
 
 		var data = {
 			gameName: $("#game-name").val().trim(),

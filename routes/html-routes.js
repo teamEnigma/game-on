@@ -1,4 +1,6 @@
 var db = require("../models");
+var email 	= require("../node_modules/emailjs/email");
+
 const sgMail = require('@sendgrid/mail');
 sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
 
@@ -15,6 +17,25 @@ module.exports = function(app) {
 
 
     app.get('/start', function(req, res) {
+
+   //  		var server 	= email.server.connect({
+			// user:    "gameon@erasports.club", 
+			// password:"TeamEnigma1", 
+			// host:    "smtp.fatcow.com", 
+			// ssl:     true
+			// });
+	
+			// // send the message and get a callback with an error or details of the message that was sent
+			// server.send({
+			// 	text:    "<html> Hello world !! </html>", 
+			// 	from:    "gameon@erasports.club", 
+			// 	to:      "rtranter25@gmail.com",   
+			// 	subject: "<html> Hello world !! </html>",
+			
+			// 	}, function(err, message) { console.log(err || message); 
+			// });
+
+
 		if (req.session.name) {
 			var email = req.session.name
 
