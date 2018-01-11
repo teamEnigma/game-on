@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		//password
 		password: {
-			type: DataTypes.STRING(45),
+			type: DataTypes.STRING(50),
 			allowNull: false
 		},
 		//10 character mobile number
