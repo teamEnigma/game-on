@@ -49,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		//state chosen from array-based dropdown
 		state: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.CHAR(2),
 			allowNull: false
 		},
 		//five digit zip code
