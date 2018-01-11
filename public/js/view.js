@@ -27,6 +27,7 @@ $(document).ready(function() {
 			email: $("#email").val().trim(),
 			password: $("#password").val().trim(),
 			phone: $("#phone").val().trim(),
+			gender: $("#gender").val().trim(),
 			birthday: $("#birthday").val().trim(),
 			city: $("#city").val().trim(),
 			state: $("#state").val().trim(),
