@@ -12,11 +12,11 @@ $(document).ready(function() {
 		}, 400);
 	}
 
-	// $("#joinjoin").click(function(){
-	// 	$("#join-button").hide(1000);
+	$("#joinjoin").click(function(){
+		$("#join-button").hide(1000);
 
-	// 	$("#demo3").show();
-	// })
+		$("#demo3").show();
+	})
 
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
@@ -39,7 +39,8 @@ $(document).ready(function() {
 			data: registerData
 		}).done(function(data) {
 			if (data === "duplicate email") {
-				$("#form-incomplete").html("Please use another email address")
+
+				$("#form-incomplete").html("Please use another email address");
 			} else {
 				window.location.href = "/start"
 			}
@@ -52,7 +53,7 @@ $(document).ready(function() {
 		var loginData = {
 			email: $("#login-email").val().trim(),
 			password: $("#login-password").val().trim()	
-		}
+			}
 
 		$.ajax({
 		  type: "GET",
@@ -69,38 +70,53 @@ $(document).ready(function() {
 	});
 
 	$("#game-form").submit(function(event) {
-	event.preventDefault();
+		event.preventDefault();
 
-	var data = {
-		gameName: $("#game-name").val().trim(),
-		eventSport: $("#event-sport").val().trim(),
-		gameDate: $("#game-date").val().trim(),
-		gameTime: $("#game-time").val().trim(),
-		street: $("#street").val().trim(),
-		city: $("#city").val().trim(),
-		state: $("#state").val().trim(),
-        zipcode: $("#zipcode").val().trim(),
-        minBirthDate: $("#min-birthdate").val().trim(),
-		minPlayers: $("#min-players").val().trim(),
-		maxPlayers: $("#max-players").val().trim(),
-		gameFee: $("#game-fee").val().trim(),
-        equipment: $("#equipment").val().trim(),
-        skillLevel: $("#skill-level").val().trim(),
-		gender: $("#gender").val().trim(),
-		disability: $("#disability").val().trim(),
-    }
+	// // if the data is all entered correctly and goes to the database
+	// if () {
 
-    console.log(data);
+	// 	$("#event-head").append(data.eventSport);
+	// 	// etc etc
+	// //the data values will go to the games table
+
+	// } else {
+
+	// // a message will appear - "something is missing"
+
+	// }
+
+		var data = {
+			gameName: $("#game-name").val().trim(),
+			eventSport: $("#event-sport").val().trim(),
+			gameDate: $("#game-date").val().trim(),
+			gameTime: $("#game-time").val().trim(),
+			street: $("#street").val().trim(),
+			city: $("#city").val().trim(),
+			state: $("#inputState").val().trim(),
+	        zipcode: $("#zipcode").val().trim(),
+	        minBirthDate: $("#min-birthdate").val().trim(),
+			minPlayers: $("#min-players").val().trim(),
+			maxPlayers: $("#max-players").val().trim(),
+			gameFee: $("#game-fee").val().trim(),
+	        equipment: $("#equipment").val().trim(),
+	        skillLevel: $("#skill-level").val().trim(),
+			gender: $("#gender").val().trim(),
+			disability: $("#disability").val().trim(),
+	    }
     
-    $.ajax({
-        type: "GET",
-        url: "/api/game",
-        data: data
-        //success: success,
-        //dataType: dataType
-      });
-	})
-});
+	    $.ajax({
+	        type: "POST",
+	        url: "/api/game",
+	        data: data
+	        //success: success,
+	        //dataType: dataType
+	    }).done(function(results) {
+	    	window.location.reload();
 
-//});
+		});
+
+	});
+
+
+});
 
