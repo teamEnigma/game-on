@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
 		user_gender: {
 			type: DataTypes.INTEGER,
 			allowNull: false
-		}
+		},
 		//email address verified on front-end
 		email: {
 			type: DataTypes.STRING(80),
