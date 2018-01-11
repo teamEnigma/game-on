@@ -18,7 +18,7 @@ module.exports = function(app) {
 		if (req.session.name) {
 			var email = req.session.name
 
-			db.Users.findOne({
+			db.User.findOne({
 				where: {
 					email: email
 				}
