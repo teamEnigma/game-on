@@ -48,19 +48,6 @@ $(document).ready(function() {
 	    }).done(function(results) {
 	    	window.location.reload();
         });
-        
-	// // if the data is all entered correctly and goes to the database
-	// if () {
-
-	// 	$("#event-head").append(data.eventSport);
-	// 	// etc etc
-	// //the data values will go to the games table
-
-	// } else {
-
-	// // a message will appear - "something is missing"
-
-	// }
 
 	});
 });
