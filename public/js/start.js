@@ -51,19 +51,4 @@ $(document).ready(function() {
 	    	window.location.reload();
         });
 	});
-
-	// // Display the games
-	// $.ajax({
-	// 	type: "GET",
-	// 	url: "/api/game"
-	// 	// data: data
-	// 	//success: success,
-	// 	//dataType: dataType
-	// }).done(function(results) {
-	// 	console.log(results)
-	// 	for (i=0; i< results.length ;i++) {
-	// 		console.log(results[i].event_name)
-	// 	}
-	// });
-
 });

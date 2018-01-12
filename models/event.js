@@ -79,7 +79,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		//gender passed from an array dropdown on the front-end
 		gender_id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING(30),
 			allowNull: false
 		},
 		//sport type passed from an array dropdown on the front-end
@@ -89,7 +89,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		//skill level passed from an array dropdown on the front-end
 		skill_level_id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING(30),
 			allowNull: false
 		}
 	});
