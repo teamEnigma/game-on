@@ -12,11 +12,6 @@ $(document).ready(function() {
 		}, 400);
 	}
 
-	$("#joinjoin").click(function(){
-
-		$("#demo3").show();
-	})
-
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 	
