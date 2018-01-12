@@ -144,34 +144,34 @@
                                 </thead>
                                 <tbody>
                                     {{#each this.gameData}}
-                                    <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-                                        <td id="event-head-joined">{{this.event_name}}</td>
-                                        <td id="event-description-joined">{{this.sport_type}}</td>
-                                        <td id="event-admin-joined">{{this.event_date}}</td>
-                                        <td id="event-location-joined">{{this.city}}</td>
-                                        {{!-- Do we need this? --}}
-                                        <td id="event-status-joined">{{this.game_on_boolean}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="12" class="hiddenRow">
-                                            <div class="accordian-body collapse" id="demo1">
-                                            <div id="game-details-joined">
-                                                <h5 id="game-time-joined">Start time: {{this.event_time}}</h5>
-                                                <h5 id="game-street-joined">Street: {{this.street}}</h5>
-                                                <h5 id="game-city-joined">City: {{this.city}} {{this.state}} {{this.zipcode}}</h5>
-                                                <h5 id="game-age-joined">Required birthdate: {{this.min_birthdate}}</h5>
-                                                <h5 id="game-fee-joined">Game fee: ${{this.game_fee}}</h5>
-                                                <h5 id="equipment-joined">Equipment needed: {{this.equipment_binary}}</h5>
-                                                <h5 id="skill-level-joined">Skill level: {{this.skill_level_id}}</h5>
-                                                <h5 id="gender-joined">Gender: {{this.gender_id}}</h5>
-                                                <h5 id="disability-joined">Disability: {{this.disability_binary}}</h5>
-                                                <h5 id="join-joined">
-                                                    <a href="#" class="btn btn-default btn-sm">Join</a>
-                                                </h5>
-                                            </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr data-toggle="collapse" data-target="#gameCollapse{{id}}" class="accordion-toggle">
+                                            <td id="event-head-joined">{{this.event_name}}</td>
+                                            <td id="event-description-joined">{{this.sport_type}}</td>
+                                            <td id="event-admin-joined">{{this.event_date}}</td>
+                                            <td id="event-location-joined">{{this.city}}</td>
+                                            {{!-- Do we need this? --}}
+                                            <td id="event-status-joined">{{this.game_on_boolean}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="hiddenRow">
+                                                <div class="accordian-body collapse" id="gameCollapse{{id}}">
+                                                <div id="game-details-joined">
+                                                    <h5 id="game-time-joined">Start time: {{this.event_time}}</h5>
+                                                    <h5 id="game-street-joined">Street: {{this.street}}</h5>
+                                                    <h5 id="game-city-joined">City: {{this.city}} {{this.state}} {{this.zipcode}}</h5>
+                                                    <h5 id="game-age-joined">Required birthdate: {{this.min_birthdate}}</h5>
+                                                    <h5 id="game-fee-joined">Game fee: ${{this.game_fee}}</h5>
+                                                    <h5 id="equipment-joined">Equipment needed: {{this.equipment_binary}}</h5>
+                                                    <h5 id="skill-level-joined">Skill level: {{this.skill_level_id}}</h5>
+                                                    <h5 id="gender-joined">Gender: {{this.gender_id}}</h5>
+                                                    <h5 id="disability-joined">Disability: {{this.disability_binary}}</h5>
+                                                    <h5 id="join-joined">
+                                                        <a href="#" class="btn btn-default btn-sm">Join</a>
+                                                    </h5>
+                                                </div>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     {{/each}}
                                 </tbody>
                             </table>
