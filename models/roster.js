@@ -7,14 +7,14 @@ module.exports = function(sequelize, DataTypes) {
 	Roster.associate = function(models) {
 		//event_id as the first column of the Roster
 		Roster.belongsTo(models.Event, {
-			foreignKey: {
+			event_id: {
 				allowNull: false,
 				primaryKey: true
 			}
 		});
 		//user_id as the second column of the Roster
 		Roster.belongsTo(models.User, {
-			foreignKey: {
+			user_id: {
 				allowNull: false,
 				primaryKey: true
 			}

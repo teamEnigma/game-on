@@ -96,23 +96,23 @@ module.exports = function(app) {
             var equipmentInt = 1
         }
 
-        if (skillLevelStr === "Novice") {
-            var skillLevelInt = 1
-        } else if (skillLevelStr === "Intermediate") {
-            var skillLevelInt = 2
-        } else if (skillLevelStr === "Expert") {
-            var skillLevelInt = 3
-        } else if (skillLevelStr === "None Specified") {
-            var skillLevelInt = 0
-        }
+        // if (skillLevelStr === "Novice") {
+        //     var skillLevelInt = 1
+        // } else if (skillLevelStr === "Intermediate") {
+        //     var skillLevelInt = 2
+        // } else if (skillLevelStr === "Expert") {
+        //     var skillLevelInt = 3
+        // } else if (skillLevelStr === "None Specified") {
+        //     var skillLevelInt = 0
+        // }
 
-        if (genderStr === "Men") {
-            var genderInt = 1
-        } else if (genderStr === "Women") {
-            var genderInt = 2
-        } else if (genderStr === "Coed") {
-            var genderInt = 3
-        }
+        // if (genderStr === "Men") {
+        //     var genderInt = 1
+        // } else if (genderStr === "Women") {
+        //     var genderInt = 2
+        // } else if (genderStr === "Coed") {
+        //     var genderInt = 3
+        // }
 
         if (disabilityStr === "No") {
             var disabilityInt = 0
@@ -134,17 +134,12 @@ module.exports = function(app) {
             max_players: maxPlayers,
             game_fee: gameFee,
             equipment_binary: equipmentInt,
-            skill_level_id: skillLevelInt,
-            gender_id: genderInt,
+            skill_level_id: skillLevelStr,
+            gender_id: genderStr,
             disability_binary: disabilityInt
         }).then(function(results) {
             res.send()
         })
     })
-
-    // app.get('/api/game', function(req, res) {
-
-    // })
-
 }
 
