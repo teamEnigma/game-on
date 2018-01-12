@@ -71,16 +71,6 @@ $(document).ready(function() {
 				$("#gameCollapse" + gameId + " .joinBtn").click(function(event) {
 					event.preventDefault();
 			
-					var joinBtn = console.log(this);
-			
-					var userId = $(this).attr("userId");
-					var gameId = $(this).attr("gameId");
-			
-					var data = {
-						userId: userId,
-						gameId: gameId
-					}
-			
 					$.ajax({
 						type: "POST",
 						url: "/api/eventconfirm",
@@ -88,6 +78,11 @@ $(document).ready(function() {
 					}).done(function(response) {
 						$("#gameCollapse" + gameId + " .joinBtn").css("visibility", "hidden")
 						$("#gameCollapse" + gameId + " #join-joined").html("<br>You have been registered!")
+
+						if (response === "game on") {
+							alert("game on")
+							$("#gameRow" + gameId + " #event-status-joined").html("true")
+						}
 					});		
 				})
 			} else if (response === "already joined") {

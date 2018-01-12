@@ -96,24 +96,6 @@ module.exports = function(app) {
             var equipmentInt = 1
         }
 
-        // if (skillLevelStr === "Novice") {
-        //     var skillLevelInt = 1
-        // } else if (skillLevelStr === "Intermediate") {
-        //     var skillLevelInt = 2
-        // } else if (skillLevelStr === "Expert") {
-        //     var skillLevelInt = 3
-        // } else if (skillLevelStr === "None Specified") {
-        //     var skillLevelInt = 0
-        // }
-
-        // if (genderStr === "Men") {
-        //     var genderInt = 1
-        // } else if (genderStr === "Women") {
-        //     var genderInt = 2
-        // } else if (genderStr === "Coed") {
-        //     var genderInt = 3
-        // }
-
         if (disabilityStr === "No") {
             var disabilityInt = 0
         } else if (disabilityStr === "Yes") {
@@ -167,10 +149,40 @@ module.exports = function(app) {
         db.Roster.create({
             UserId: userId,
             EventId: gameId
-        }).then(function(results) {
-            res.send("joined successfully")
-        })
+        }).then(function() {
+            db.Event.findOne({
+                where: {
+                    id: gameId
+                }
+            }).then(function(results) {
+                var gameStatus = results.game_on_boolean;
+                var playersNeeded = results.min_players;
 
+                if (!gameStatus) {
+                    db.Roster.count({
+                        where: {
+                            EventId: gameId
+                        }
+                    }).then(function(count) {
+                        if (count >= playersNeeded) {
+                            db.Event.update({
+                                game_on_boolean: 1
+                            }, {
+                                where: {
+                                    id: gameId
+                                }
+                            }).then(function() {
+                                res.send("game on");
+                            })                           
+                        } else {
+                            res.send();
+                        }
+                    })
+                } else {
+                    res.send();
+                }
+            })
+        })
     })
 }
 
