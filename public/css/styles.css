@@ -23,12 +23,28 @@
   font-size: 15px;
 }
 
+#login-incomplete, #form-incomplete {
+  color: red;
+  font-weight: 10px;
+ }
+
 .panel-heading {
   background: url("/images/soccer.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+/*#create-game-colored {
+  background: linear-gradient(to right, #0E002E, #99112E);
+  color: white;
+  border: 10px solid white;
+}*/
+
+#body-colored{
+  background: linear-gradient(to right, #0E002E, #99112E);
+  color: white;
+  border: 10px solid white;
 }
 
 body {
@@ -40,13 +56,6 @@ body {
   background-color: white;
   margin-left: 200px;
   margin-right: 200px;
-}
-
-/* STYLING FOR THE GAME DETAILS*/
-
-#game-details-joined {
- /*background: linear-gradient(to right, white , grey);*/
- /*background: url("/images/fieldbackground2.jpg") no-repeat center center fixed;*/
 }
 
 @media 

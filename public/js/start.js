@@ -54,10 +54,12 @@ $(document).ready(function() {
 		var gameRow = this;
 		var userId = $(this).attr("userId");
 		var gameId = $(this).attr("gameId");
+		var gameName = $(this).attr("gameName");
 
 		var data = {
 			userId: userId,
-			gameId: gameId
+			gameId: gameId,
+			gameName: gameName
 		}
 
 	    $.ajax({
