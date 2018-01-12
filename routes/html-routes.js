@@ -44,11 +44,13 @@ module.exports = function(app) {
 				}
 			}).then(function(results) {
 				var name = results.first_name
+				var id = results.id
 
 				db.Event.findAll({}).then(function(gameData) {  
 					
 					var hbsObj = {
 						userEmail: email,
+						userId: id,
 						userName: name,
 						inputState: stateArray,
 						gameData: gameData
