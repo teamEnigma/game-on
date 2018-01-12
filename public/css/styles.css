@@ -23,7 +23,7 @@
   font-size: 15px;
 }
 
-#login-incomplete {
+#login-incomplete, #form-incomplete {
   color: red;
   font-weight: 10px;
  }
