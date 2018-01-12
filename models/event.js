@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		//chosen time of event passed from hh:mm on front end
 		event_time: {
-			type: DataTypes.DATE,
+			type: DataTypes.TIME,
 			allowNull: false
 		},
 		//chosen date of event passed from mmddyyyy on front end
@@ -55,20 +55,25 @@ module.exports = function(sequelize, DataTypes) {
 		//identifies whether the min limit has been reached to control external contact functions
 		game_on_boolean: {
 			type: DataTypes.BOOLEAN,
-			allowNull: false
+			allowNull: false,
+			defaultValue: false
 		},
 		//city where the event will take place
+		street: {
+			type: DataTypes.STRING(80),
+			allowNull: false
+		},
 		city: {
 			type: DataTypes.STRING(45),
 			allowNull: false
 		},
 		//state passed from an array dropdown on the front-end
 		state: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.CHAR(2),
 			allowNull: false
 		},
 		//five digit zip code
-		zip: {
+		zipcode: {
 			type: DataTypes.STRING(5),
 			allowNull: false
 		},
@@ -78,8 +83,8 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
 		//sport type passed from an array dropdown on the front-end
-		sport_type_id: {
-			type: DataTypes.INTEGER,
+		sport_type: {
+			type: DataTypes.STRING(80),
 			allowNull: false
 		},
 		//skill level passed from an array dropdown on the front-end
@@ -93,7 +98,7 @@ module.exports = function(sequelize, DataTypes) {
 	Event.associate = function(models) {
 		Event.belongsTo(models.User, {
 			foreignKey: {
-				allowNull: false
+				// allowNull: false
 			}
 		});
 	};
