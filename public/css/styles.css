@@ -23,6 +23,11 @@
   font-size: 15px;
 }
 
+#login-incomplete {
+  color: red;
+  font-weight: 10px;
+ }
+
 .panel-heading {
   background: url("/images/soccer.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
