@@ -14,6 +14,16 @@ $(document).ready(function() {
 
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
+
+		var genderStr = $("#gender").val().trim();
+
+		if (genderStr === "Male") {
+			var genderInt = 1
+		} else if (genderStr === "Female") {
+			var genderInt = 2
+		} else if (genderStr === "Coed") {
+			var genderInt = 3
+		}
 	
 		var registerData = {
 			firstName: $("#first-name").val().trim(),
@@ -21,6 +31,7 @@ $(document).ready(function() {
 			email: $("#email").val().trim(),
 			password: $("#password").val().trim(),
 			phone: $("#phone").val().trim(),
+			gender: genderInt,
 			birthday: $("#birthday").val().trim(),
 			city: $("#city").val().trim(),
 			state: $("#state").val().trim(),
@@ -50,7 +61,7 @@ $(document).ready(function() {
 			}
 
 		$.ajax({
-		  type: "GET",
+		  type: "POST",
 		  url: "/api/login",
 		  data: loginData
 		}).done(function(results) {
@@ -60,44 +71,7 @@ $(document).ready(function() {
 				window.location.href = "/start"
 			}
 		})
-
 	});
-
-	$("#game-form").submit(function(event) {
-		event.preventDefault();
-
-		var data = {
-			gameName: $("#game-name").val().trim(),
-			eventSport: $("#event-sport").val().trim(),
-			gameDate: $("#game-date").val().trim(),
-			gameTime: $("#game-time").val().trim(),
-			street: $("#street").val().trim(),
-			city: $("#city").val().trim(),
-			state: $("#inputState").val().trim(),
-	        zipcode: $("#zipcode").val().trim(),
-	        minBirthDate: $("#min-birthdate").val().trim(),
-			minPlayers: $("#min-players").val().trim(),
-			maxPlayers: $("#max-players").val().trim(),
-			gameFee: $("#game-fee").val().trim(),
-	        equipment: $("#equipment").val().trim(),
-	        skillLevel: $("#skill-level").val().trim(),
-			gender: $("#gender").val().trim(),
-			disability: $("#disability").val().trim(),
-	    }
-    
-	    $.ajax({
-	        type: "POST",
-	        url: "/api/game",
-	        data: data
-	        //success: success,
-	        //dataType: dataType
-	    }).done(function(results) {
-	    	window.location.reload();
-
-		});
-
-	});
-
 
 });
 

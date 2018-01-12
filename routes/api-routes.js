@@ -1,4 +1,4 @@
-var db = require("../models");
+var db = require("../models/");
 
 module.exports = function(app) {
     app.post('/api/register', function(req, res) {
@@ -7,21 +7,23 @@ module.exports = function(app) {
         var email = req.body.email.trim();
         var password = req.body.password.trim();
         var phone = req.body.phone.trim();
+        var gender = req.body.gender.trim();
         var birthday = req.body.birthday.trim();
         var city = req.body.city.trim();
         var state = req.body.state.trim();
         var zipcode = req.body.zipcode.trim();
 
-        db.Users.findOne({
+        db.User.findOne({
             where: {email: email}
         }).then(function(results) {
             if (results === null) {
-                db.Users.create({
+                db.User.create({
                     first_name: firstName,
                     last_name: lastName,
                     email: email,
                     password: password,
-                    cell_phone: phone,
+                    mobile_number: phone,
+                    user_gender: gender,
                     birthdate: birthday,
                     city: city,
                     state: state,
@@ -35,11 +37,11 @@ module.exports = function(app) {
         })
     })
 
-    app.get('/api/login', function(req, res) {
-        var email = req.query.email;
-        var password = req.query.password;
+    app.post('/api/login', function(req, res) {
+        var email = req.body.email;
+        var password = req.body.password;
 
-        db.Users.findOne({
+        db.User.findOne({
             where: {
                 email: email,
                 password: password
@@ -49,7 +51,7 @@ module.exports = function(app) {
                 res.send("incorrect login")
             } else {
                 req.session.name = email;
-                res.send(req.session.name)
+                res.send()
             }
         })
     })
@@ -57,10 +59,80 @@ module.exports = function(app) {
     app.delete('/api/remove', function(req, res) {
         var userEmail = req.body.email;
 
-        db.Users.destroy({
+        db.User.destroy({
             where: {
                 email: userEmail
             }
+        }).then(function(results) {
+            res.send()
+        })
+    })
+
+    app.post('/api/game', function(req, res) {
+        var gameName = req.body.gameName.trim();
+        var eventSport = req.body.eventSport.trim();
+        var gameDate = req.body.gameDate.trim();
+        var gameTime = req.body.gameTime.trim();
+        var street = req.body.street.trim();
+        var city = req.body.city.trim();
+        var state = req.body.state.trim();
+        var zipcode = req.body.zipcode.trim();
+        var minBirthDate = req.body.minBirthDate.trim();
+        var minPlayers = req.body.minPlayers.trim();
+        var maxPlayers = req.body.maxPlayers.trim();
+        var gameFee = req.body.gameFee.trim();
+        var equipmentStr = req.body.equipment.trim();
+        var skillLevelStr = req.body.skillLevel.trim();
+        var genderStr = req.body.gender.trim();
+        var disabilityStr = req.body.disability.trim();
+
+        if (equipmentStr === "No") {
+            var equipmentInt = 0
+        } else if (equipmentStr === "Yes") {
+            var equipmentInt = 1
+        }
+
+        if (skillLevelStr === "Novice") {
+            var skillLevelInt = 1
+        } else if (skillLevelStr === "Intermediate") {
+            var skillLevelInt = 2
+        } else if (skillLevelStr === "Expert") {
+            var skillLevelInt = 3
+        } else if (skillLevelStr === "None Specified") {
+            var skillLevelInt = 0
+        }
+
+        if (genderStr === "Men") {
+            var genderInt = 1
+        } else if (genderStr === "Women") {
+            var genderInt = 2
+        } else if (genderStr === "Coed") {
+            var genderInt = 3
+        }
+
+        if (disabilityStr === "No") {
+            var disabilityInt = 0
+        } else if (disabilityStr === "Yes") {
+            var disabilityInt = 1
+        }
+    
+        db.Event.create({
+            event_name: gameName,
+            sport_type: eventSport,
+            event_date: gameDate,
+            event_time: gameTime,
+            street: street,
+            city: city,
+            state: state,
+            zipcode: zipcode,
+            min_birthdate: minBirthDate,
+            min_players: minPlayers,
+            max_players: maxPlayers,
+            game_fee: gameFee,
+            equipment_binary: equipmentInt,
+            skill_level_id: skillLevelInt,
+            gender_id: genderInt,
+            disability_binary: disabilityInt
         }).then(function(results) {
             res.send()
         })
