@@ -124,6 +124,7 @@ module.exports = function(app) {
         })
     })
 
+    // Check if a user has already joined a game
     app.post('/api/eventcheck', function(req, res) {
         var userId = req.body.userId
         var gameId = req.body.gameId
@@ -142,9 +143,11 @@ module.exports = function(app) {
         })
     })
 
+    // Add a user to an event
     app.post('/api/eventconfirm', function(req, res) {
-        var userId = req.body.userId
-        var gameId = req.body.gameId
+        var userId = req.body.userId;
+        var gameId = req.body.gameId;
+        var gameName = req.body.gameName;
 
         db.Roster.create({
             UserId: userId,
@@ -158,6 +161,7 @@ module.exports = function(app) {
                 var gameStatus = results.game_on_boolean;
                 var playersNeeded = results.min_players;
 
+                // Game On Functionality
                 if (!gameStatus) {
                     db.Roster.count({
                         where: {
@@ -173,6 +177,31 @@ module.exports = function(app) {
                                 }
                             }).then(function() {
                                 res.send("game on");
+
+                                // Send a text message to everyone that's going
+                                db.Roster.findAll({
+                                    where: {
+                                        EventId: gameId
+                                    }
+                                }).then(function(reply) {
+                                    var guestList = []
+                                    for (i=0; i<reply.length; i++) {
+                                        var userId = reply[i].UserId;
+                                        guestList.push(userId)
+                                    }
+
+                                    var sendMessage = require("./send-sms")
+                                    for (i=0; i<guestList.length; i++) {
+                                        db.User.findOne({
+                                            where: {
+                                                id: guestList[i]
+                                            }
+                                        }).then(function(data) {
+                                            var guestPhone = data.mobile_number
+                                            sendMessage(guestPhone, gameName)
+                                        })                                       
+                                    }
+                                })
                             })                           
                         } else {
                             res.send();
@@ -180,6 +209,8 @@ module.exports = function(app) {
                     })
                 } else {
                     res.send();
+
+                    // Send a text message to the user that just added the game
                 }
             })
         })

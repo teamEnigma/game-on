@@ -148,7 +148,7 @@
                                 </thead>
                                 <tbody>
                                     {{#each this.gameData}}
-                                        <tr data-toggle="collapse" data-target="#gameCollapse{{id}}" class="accordion-toggle gameRow" userId="{{../userId}}" gameId="{{this.id}}"  id="gameRow{{id}}">
+                                        <tr data-toggle="collapse" data-target="#gameCollapse{{id}}" class="accordion-toggle gameRow" userId="{{../userId}}" gameId="{{this.id}}" gameName="{{this.event_name}}"  id="gameRow{{id}}">
                                             <td id="event-head-joined">{{this.event_name}}</td>
                                             <td id="event-description-joined">{{this.sport_type}}</td>
                                             <td id="event-admin-joined">{{this.event_date}}</td>
@@ -170,7 +170,7 @@
                                                     <h5 id="gender-joined">Gender: {{this.gender_id}}</h5>
                                                     <h5 id="disability-joined">Disability: {{this.disability_binary}}</h5>
                                                     <h5 id="join-joined">
-                                                        <a href="#" class="btn btn-default btn-sm joinBtn" userId="{{../userId}}" gameId="{{this.id}}">Join</a>
+                                                        <a href="#" class="btn btn-default btn-sm joinBtn" userId="{{../userId}}" gameId="{{this.id}}" gameName="{{this.event_name}}">Join</a>
                                                     </h5>
                                                 </div>
                                                 </div>
