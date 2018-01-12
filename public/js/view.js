@@ -12,12 +12,6 @@ $(document).ready(function() {
 		}, 400);
 	}
 
-	$("#joinjoin").click(function(){
-		$("#join-button").hide(1000);
-
-		$("#demo3").show();
-	})
-
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 
@@ -78,5 +72,6 @@ $(document).ready(function() {
 			}
 		})
 	});
+
 });
 
