@@ -17,6 +17,7 @@ module.exports = function(app) {
         db.User.findOne({
             where: {email: email}
         }).then(function(results) {
+            // Add the user if the email is unique
             if (results === null) {
                 db.User.create({
                     first_name: firstName,
@@ -32,6 +33,7 @@ module.exports = function(app) {
                 }).then(function(results) {
                     res.send()
                 })
+            // If the email already exists notify the frontend
             } else {
                 res.send("duplicate email")
             }
@@ -49,8 +51,10 @@ module.exports = function(app) {
                 password: password
             }
         }).then(function(results) {
+            // If there are no result notify the frontend that the login failed
             if (results === null) {
                 res.send("incorrect login")
+            // Start a new session for the user
             } else {
                 req.session.name = email;
                 res.send()
@@ -161,13 +165,14 @@ module.exports = function(app) {
                 var gameStatus = results.game_on_boolean;
                 var playersNeeded = results.min_players;
 
-                // Game On Functionality
+                // Game On Functionality if the game wasn't previously on
                 if (!gameStatus) {
                     db.Roster.count({
                         where: {
                             EventId: gameId
                         }
                     }).then(function(count) {
+                        // If the game is not on due to the new guest
                         if (count >= playersNeeded) {
                             db.Event.update({
                                 game_on_boolean: 1
@@ -198,19 +203,35 @@ module.exports = function(app) {
                                             }
                                         }).then(function(data) {
                                             var guestPhone = data.mobile_number
+
+                                            // Text Message function
                                             sendMessage(guestPhone, gameName)
                                         })                                       
                                     }
                                 })
-                            })                           
+                            })  
+                        // If the game still isn't on                         
                         } else {
                             res.send();
                         }
                     })
+                // If the game was already on
                 } else {
                     res.send();
 
                     // Send a text message to the user that just added the game
+                    var sendMessage = require("./send-sms")
+
+                    db.User.findOne({
+                        where: {
+                            id: userId
+                        }
+                    }).then(function(data) {
+                        var guestPhone = data.mobile_number
+
+                        // Text Message function
+                        sendMessage(guestPhone, gameName)
+                    })                                                         
                 }
             })
         })

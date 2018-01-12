@@ -1,8 +1,7 @@
 $(document).ready(function() {
+	// Form collapse functionality
 	$('.collapse').on('shown.bs.collapse', function (e) {
 		var id = $(e.target).prop('id');
-		// To scroll to panel-body (untested)
-		// var id = $(e.target).children('.panel-body').prop('id');
 		navigateToElement(id);
 	 });
 
@@ -12,6 +11,7 @@ $(document).ready(function() {
 		}, 400);
 	}
 
+	// submit the registartion form
 	$("#register-form").submit(function(event) {
 		event.preventDefault();
 
@@ -43,15 +43,18 @@ $(document).ready(function() {
 		    url: "/api/register",
 			data: registerData
 		}).done(function(data) {
+			// Error message if the email address is already in the system
 			if (data === "duplicate email") {
 
 				$("#form-incomplete").html("Please use another email address");
+			// Go to the start page if logged in
 			} else {
-				window.location.href = "/start"
+				window.location.href = "/index"
 			}
 		});
 	});
 
+	// User login form
 	$("#login-form").submit(function(event) {
 		event.preventDefault();
 
@@ -65,8 +68,10 @@ $(document).ready(function() {
 		  url: "/api/login",
 		  data: loginData
 		}).done(function(results) {
+			// Error message if the login didn't work
 			if (results === "incorrect login") {
 				$("#login-incomplete").html("Your login is invalid")
+			// Redirect the user to the start page
 			} else {
 				window.location.href = "/start"
 			}

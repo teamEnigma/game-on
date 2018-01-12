@@ -4,6 +4,7 @@ $(document).ready(function() {
         event.preventDefault();
         var email = $(this).attr("email")
 
+		// Click to confirm
         if ($(this).attr("clicked") === "false") {
             $(this).attr("clicked", "true")
             $(this).text("CONFIRM REMOVAL")
@@ -50,6 +51,7 @@ $(document).ready(function() {
 		});
 	});
 
+	// Open a game and display the registration stataus with a one time query
 	$(".gameRow").one( "click", function() {
 		var gameRow = this;
 		var userId = $(this).attr("userId");
@@ -67,9 +69,12 @@ $(document).ready(function() {
 	        url: "/api/eventcheck",
 	        data: data
 	    }).done(function(response) {
+			// I the user hasn't joined yet
 	    	if (response === "havent joined") {
+				// Display a sign up button
 				$("#gameCollapse" + gameId + " .joinBtn").css("visibility", "visible")
 
+				// Button to join a game
 				$("#gameCollapse" + gameId + " .joinBtn").click(function(event) {
 					event.preventDefault();
 			
@@ -78,14 +83,17 @@ $(document).ready(function() {
 						url: "/api/eventconfirm",
 						data: data
 					}).done(function(response) {
+						// Hide the button and tellthe user that they've been registered
 						$("#gameCollapse" + gameId + " .joinBtn").css("visibility", "hidden")
 						$("#gameCollapse" + gameId + " #join-joined").html("<br>You have been registered!")
 
+						// change the text when the game-on status has changed
 						if (response === "game on") {
 							$("#gameRow" + gameId + " #event-status-joined").html("true")
 						}
 					});		
 				})
+			// Message if the user has already joined
 			} else if (response === "already joined") {
 				$("#gameCollapse" + gameId + " #join-joined").html("<br>You have been registered!")
 			}

@@ -10,6 +10,7 @@ require("dotenv").config();
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+// Initialize Cookie Parser user auth sessions
 app.use(cookieParser());
 app.use(session({secret: process.env.SESSION_SECRET}))
 
@@ -25,14 +26,12 @@ app.use(bodyParser.json());
 
 // Initialize handlebars
 var exphbs = require("express-handlebars");
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Initialize the routing file
+// Initialize the routing files
 app.use(express.static("public"));
 require("./routes/api-routes.js")(app);
-
 require("./routes/html-routes.js")(app);
 
 // Start the server
