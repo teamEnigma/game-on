@@ -3,7 +3,7 @@ var email 	= require("../node_modules/emailjs/email");
 
 module.exports = function(app) {
 	var stateArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
-
+	var sportsArray = ["Soccer", "Football", "Basketball", "Beach Volleyball", "Indoor Volleyball", "Floor Hockey", "Ice Hockey", "Field Hockey", "Golf", "Frisbee Golf", "Ultimate Frisbee", "Badminton", "Tennis", "Bowling", "Baseball", "Softball", "Ping Pong", "Broomball", "Dodgeball", "Curling", "Kickball", "Rugby", "Cricket", "Water Polo", "Handball", "Billiards", "Handball", "Cycling", "Lacrosse", "Box Lacrosse", "Paintball", "Polo", "Sparring", "Weightlifting", "Fencing"]
     app.get('/index', function(req, res) {
 		if (req.session.name) {
 			res.redirect('/start')
@@ -52,6 +52,7 @@ module.exports = function(app) {
 						userId: id,
 						userName: name,
 						inputState: stateArray,
+						inputSport: sportsArray,
 						gameData: gameData
 					};
 					
