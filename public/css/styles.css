@@ -36,6 +36,12 @@
   background-size: cover;
 }
 
+#body-colored{
+  background: linear-gradient(to right, #0E002E, #99112E);
+  color: white;
+  border: 10px solid white;
+}
+
 body {
   background: linear-gradient(to right, #99112E , #0E002E);
 }
