@@ -47,13 +47,6 @@ body {
   margin-right: 200px;
 }
 
-/* STYLING FOR THE GAME DETAILS*/
-
-#game-details-joined {
- /*background: linear-gradient(to right, white , grey);*/
- /*background: url("/images/fieldbackground2.jpg") no-repeat center center fixed;*/
-}
-
 @media 
 only screen and (max-width: 600px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
