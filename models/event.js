@@ -1,93 +1,108 @@
 module.exports = function(sequelize, DataTypes) {
-
-	var Event = sequelize.define("Event", {
-		game_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 140]
-			}
+	//establish the Event table in the MySQL database w/ Sequelize
+	const Event = sequelize.define("Event", {
+		//primary game identifier
+		// game_id: {
+		// 	type: DataTypes.INTEGER,
+		// 	primaryKey: true,
+		// 	autoIncrement: true
+		// },
+		//chosen name of event
+		event_name: {
+			type: DataTypes.STRING(80),
+			allowNull: false
 		},
+		//chosen time of event passed from hh:mm on front end
+		event_time: {
+			type: DataTypes.TIME,
+			allowNull: false
+		},
+		//chosen date of event passed from mmddyyyy on front end
+		event_date: {
+			type: DataTypes.DATEONLY,
+			allowNull: false
+		},
+		//minimum # of players for game to occur
 		min_players: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				len: [1, 2]
-			}
+			allowNull: false
 		},
+		//maximum limit of players
 		max_players: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				len: [1, 3]
-			}
+			allowNull: false
 		},
-		game_date: {
-			type: DataTypes.DATE,
-			allowNull: false,
-        },
-        game_time: {
-			type: DataTypes.TIME,
-			allowNull: false,
-        },
-        game_fee: {
-			type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-				len: [1, 3]
-			}
-        },
-        min_birthdate: {
-			type: DataTypes.DATE,
-			allowNull: false,
-        },
-        address: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 60]
-			}
+		//whether users need to bring their own equipment
+		equipment_binary: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false
 		},
-        city: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1, 45]
-			}
+		//whether users with disabilities are able to be accomodated
+		disability_binary: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false
 		},
+		//specifies the minimum age for users to play in the event
+		min_birthdate: {
+			type: DataTypes.DATEONLY,
+			allowNull: false
+		},
+		//fee as a float or 0.00 if no game fee
+		game_fee: {
+			type: DataTypes.DECIMAL(10,2),
+			allowNull: false
+		},
+		//identifies whether the min limit has been reached to control external contact functions
+		game_on_boolean: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false,
+			defaultValue: false
+		},
+		//city where the event will take place
+		street: {
+			type: DataTypes.STRING(80),
+			allowNull: false
+		},
+		city: {
+			type: DataTypes.STRING(45),
+			allowNull: false
+		},
+		//state passed from an array dropdown on the front-end
 		state: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [2, 2]
-			}
+			type: DataTypes.CHAR(2),
+			allowNull: false
 		},
-		zip: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				len: [5, 5]
-			}
-        },
-        equipment: {
-			type: DataTypes.BOOLEAN,
-			allowNull: false,
-            defaultValue: false,
-        },
-        disability: {
-			type: DataTypes.BOOLEAN,
-			allowNull: false,
-            defaultValue: false,
-        },
-        skill_level_code: {
-			type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-				len: [1, 30]
-			}
-        },
+		//five digit zip code
+		zipcode: {
+			type: DataTypes.STRING(5),
+			allowNull: false
+		},
+		//gender passed from an array dropdown on the front-end
+		gender_id: {
+			type: DataTypes.STRING(30),
+			allowNull: false
+		},
+		//sport type passed from an array dropdown on the front-end
+		sport_type: {
+			type: DataTypes.STRING(80),
+			allowNull: false
+		},
+		//skill level passed from an array dropdown on the front-end
+		skill_level_id: {
+			type: DataTypes.STRING(30),
+			allowNull: false
+		}
 	});
 
-	return Event
+	//event must be tied to a user_id
+	Event.associate = function(models) {
+		Event.belongsTo(models.User, {
+			foreignKey: {
+				// allowNull: false
+			}
+		});
+	};
+
+	return Event;
 
 };

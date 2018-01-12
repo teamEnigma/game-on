@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	// Remove a user from the database
     $("#removeUser").click(function(event) {
         event.preventDefault();
         var email = $(this).attr("email")
@@ -17,6 +18,7 @@ $(document).ready(function() {
         }
     });
 
+	// Add a new game
 	$("#game-form").submit(function(event) {
         event.preventDefault();
         
@@ -43,24 +45,48 @@ $(document).ready(function() {
 	        type: "POST",
 	        url: "/api/game",
 	        data: data
-	        //success: success,
-	        //dataType: dataType
 	    }).done(function(results) {
 	    	window.location.reload();
-        });
-        
-	// // if the data is all entered correctly and goes to the database
-	// if () {
-
-	// 	$("#event-head").append(data.eventSport);
-	// 	// etc etc
-	// //the data values will go to the games table
-
-	// } else {
-
-	// // a message will appear - "something is missing"
-
-	// }
-
+		});
 	});
+
+	$(".gameRow").one( "click", function() {
+		var gameRow = this;
+		var userId = $(this).attr("userId");
+		var gameId = $(this).attr("gameId");
+
+		var data = {
+			userId: userId,
+			gameId: gameId
+		}
+
+	    $.ajax({
+	        type: "POST",
+	        url: "/api/eventcheck",
+	        data: data
+	    }).done(function(response) {
+	    	if (response === "havent joined") {
+				$("#gameCollapse" + gameId + " .joinBtn").css("visibility", "visible")
+
+				$("#gameCollapse" + gameId + " .joinBtn").click(function(event) {
+					event.preventDefault();
+			
+					$.ajax({
+						type: "POST",
+						url: "/api/eventconfirm",
+						data: data
+					}).done(function(response) {
+						$("#gameCollapse" + gameId + " .joinBtn").css("visibility", "hidden")
+						$("#gameCollapse" + gameId + " #join-joined").html("<br>You have been registered!")
+
+						if (response === "game on") {
+							$("#gameRow" + gameId + " #event-status-joined").html("true")
+						}
+					});		
+				})
+			} else if (response === "already joined") {
+				$("#gameCollapse" + gameId + " #join-joined").html("<br>You have been registered!")
+			}
+		});
+	})
 });

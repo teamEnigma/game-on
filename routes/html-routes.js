@@ -1,37 +1,63 @@
 var db = require("../models");
+var email 	= require("../node_modules/emailjs/email");
+
 const sgMail = require('@sendgrid/mail');
 sgMail.setSubstitutionWrappers('{{', '}}'); // Configure the substitution tag wrappers globally
 
 module.exports = function(app) {
+	var stateArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
+
     app.get('/index', function(req, res) {
 		if (req.session.name) {
 			res.redirect('/start')
 		} else {
-			res.render("index")
+			res.render("index", {inputState: stateArray})
 		}
-    })
-
-    var stateArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
-
-
+	})
+	
     app.get('/start', function(req, res) {
+
+   //  		var server 	= email.server.connect({
+			// user:    "gameon@erasports.club", 
+			// password:"TeamEnigma1", 
+			// host:    "smtp.fatcow.com", 
+			// ssl:     true
+			// });
+	
+			// // send the message and get a callback with an error or details of the message that was sent
+			// server.send({
+			// 	text:    "<html> Hello world !! </html>", 
+			// 	from:    "gameon@erasports.club", 
+			// 	to:      "rtranter25@gmail.com",   
+			// 	subject: "<html> Hello world !! </html>",
+			
+			// 	}, function(err, message) { console.log(err || message); 
+			// });
+
+
 		if (req.session.name) {
 			var email = req.session.name
 
-			db.Users.findOne({
+			db.User.findOne({
 				where: {
 					email: email
 				}
 			}).then(function(results) {
 				var name = results.first_name
-			
-				var hbsObj = {
-					userEmail: email,
-					userName: name,
-					inputState: stateArray
-				};
+				var id = results.id
 
-				res.render("start", hbsObj)
+				db.Event.findAll({}).then(function(gameData) {  
+					
+					var hbsObj = {
+						userEmail: email,
+						userId: id,
+						userName: name,
+						inputState: stateArray,
+						gameData: gameData
+					};
+					
+					res.render("start", hbsObj)
+				})
 			})
 		} else {
 			res.redirect('/');

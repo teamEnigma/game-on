@@ -1,244 +1,181 @@
 <div class="container">
-	<div class="jumbotron">
-		<p id="signed-in-as" class="text-right"> Signed in as {{userName}}</p>
-		<p id="logout-button" class="text-right"><a href="/logout">Logout</a></p>
-		<h1 class="text-center">Game ON!</h1>
-		<h3 class="text-center">Create a Game</h3>
-	</div>
+    <div class="jumbotron">
+        <p id="signed-in-as" class="text-right"> Signed in as {{userName}}</p>
+        <p id="logout-button" class="text-right"><a href="/logout">Logout</a></p>
+        <h1 class="text-center">Game ON!</h1>
+        <h3 class="text-center">Create a Game</h3>
+    </div>
 </div>
 
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			{{!-- <a href="/logout">Logout</a> --}}
-			{{!-- <br> --}}
-			{{!-- <a id="removeUser" email="{{userEmail}}" clicked="false">Delete your account</a> --}}
-			{{!-- <br><br> --}}
-			{{!-- <p>{{userName}}, welcome to Game ON!</p> --}}
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title text-center"><strong>Click the start button below to create a new game</strong></h3>
-					<br>
-					<button data-toggle="collapse" data-target="#demo2" type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span> Start</button>
-				</div>
-			</div>
-		</div>			
-	</div>
-
-	<div class="row" id="join-button">
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading" id="join-button">
-					<h3 class="panel-title text-center"><strong>Click the join button below to join a game</strong></h3>
-					<br>
-					<button id="joinjoin" data-toggle="collapse" data-target="#demo" type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span> Join</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="demo2" class="collapse">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title"><strong>Start a Game</strong></h3>
-					</div>
-
-					<div class="panel-body">
-						<form  id="game-form" role="form">
-							<div class="form-group">
-								<label for="">Game Name</label>
-									<input type="text" class="form-control" id="game-name" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="">Sport Type</label>
-									<input type="text" class="form-control" id="event-sport" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="">Game Date</label>
-								<input type="date" class="form-control" id="game-date" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="">Game Start Time</label>
-								<input type="time" class="form-control" id="game-time" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="">Game Location</label>
-								<input type="text" class="form-control" id="street" placeholder="Street">
-								<input type="text" class="form-control" id="city" placeholder="City">
-								{{!<input type="text" class="form-control" id="state" placeholder="ST">!}}
-
-								<select id="inputState" class="form-control">
-									<option selected>Choose...</option>
-{{!-- 									<option>AK</option>
-									<option>AL</option>
-									<option>AR</option>
-									<option>AZ</option> --}}
-
-									{{#each inputState}}
-  										<option>{{this}}</option>
-  									{{/each}}
-									
-								</select>
-
-								<input type="number" class="form-control" id="zipcode" placeholder="Zip Code">
-							</div>
-							<div class="form-group">
-								<label for="">Minimum Age</label>
-								<input type="date" class="form-control" id="min-birthdate" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="">Minimum Number of Players</label>
-								<input type="number" class="form-control" id="min-players" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="">Maximum Number of Players</label>
-								<input type="number" class="form-control" id="max-players" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="">Game Fee</label>
-								<input type="number" class="form-control" id="game-fee" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="">Is Equipment Required?</label>
-								{{!<input type="text" class="form-control" id="equipment" placeholder="">!}}
-								<select class="form-control" id="equipment">
-									<option>Yes</option>
-									<option>No</option>
-									</select>
-							</div>
-							<div class="form-group">
-								<label for="">Skill Level</label>
-								<select class="form-control" id="skill-level">
-									<option>Novice</option>
-									<option>Intermediate</option>
-									<option>Expert</option>
-									<option>None Specified</option>
-									</select>
-							</div>
-							<div class="form-group">
-								<label for="">Gender Requirement</label>
-								<select class="form-control" id="gender">
-									<option>Men</option>
-									<option>Women</option>
-									<option>Gender Agnostic</option>
-									<option>Coed</option>
-									</select>
-							</div>
-							<div class="form-group">
-								<label for="">Does the game support disabilities</label>
-								<select class="form-control" id="disability">
-									<option>Yes</option>
-									<option>No</option>
-									</select>
-							</div>
-							<div class="text-right">
-								<button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span> Create Game</button>
-							</div>
-
-						</form>
-					</div>
-				</div>
-			</div>			
-		</div>
-	</div>
-
-	<div id="demo3" class="collapse">
-		<div class="row">
-			<div class="col-lg-12">
-		    	<div class="panel panel-default">
-		        	<div class="panel-heading"><h3>GAMES</h3></div>
-		            	<div class="panel-body">
-							<table class="table table-condensed" style="border-collapse:collapse;">
-
-							    <thead>
-							        <tr><th>&nbsp;</th>
-							            <th id="event-head">Event</th>
-							            <th id="event-description">Description</th>
-							            <th id="event-admin">Created by</th>
-							            <th id="event-location">Location</th>
-							            <th id="event-status">Status</th>
-							        </tr>
-							    </thead>
-
-							    <tbody>
-							        <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-							                  <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-
-							          	<td id="event-head">Hockey</td>
-							            <td id="event-description">7 on 7</td>
-							            <td id="event-admin">richdude207</td>
-							            <td id="event-location">Chicago, IL</td>
-							            <td id="event-status">created</td>
-
-							        </tr>
-							        <tr>
-							            <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo1"> 
-							              	<table class="table table-striped">
-							                    <thead>
-
-							                        <tr>
-							                        	<th>Access Key</th>
-							                        	<th>Secret Key</th>
-							                        	<th>Status </th>
-							                        	<th> Created</th>
-							                        	<th> Expires</th>
-							                        	<th>Actions</th>
-							                        </tr>
-							                    </thead>
-
-							                    <tbody>
-							                        <tr>
-							                        	<td>access-key-1</td>
-							                        	<td>secretKey-1</td>
-							                        	<td>Status</td>
-							                        	<td>some date</td>
-							                        	<td>some date</td>
-							                        	<td><a href="#" class="btn btn-default btn-sm">
-							                  			<i class="glyphicon glyphicon-cog"></i> Join</a></td>
-							              			</tr>
-
-							                    </tbody>
-							               	</table>
-							              
-							              {{!-- </div> --}}
-							          	</td>
-							        </tr>
-							        <tr data-toggle="collapse" data-target="#demotwo" class="accordion-toggle">
-							                <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-							                <td>Football</td>
-							            	<td>3 on 3</td>
-							            	<td>dantheman101</td>
-							            	<td>Antioch, IL</td>
-							          		<td>created</td>
-							        </tr>
-							        <tr>
-							            <td colspan="6" class="hiddenRow"><div id="demotwo" class="accordian-body collapse">Demo2</div></td>
-							        </tr>
-							        <tr data-toggle="collapse" data-target="#demothree" class="accordion-toggle">
-							            <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-							            <td>OBS Name</td>
-							            <td>OBS Description</td>
-							            <td>hpcloud</td>
-							            <td>nova</td>
-							          <td> created</td>
-							        </tr>
-							        <tr>
-							            <td colspan="6" class="hiddenRow"><div id="demothree" class="accordian-body collapse">Demo3</div></td>
-							        </tr>
-							    </tbody>
-							</table>
-		            	</div>
-		        	</div> 
-		    	</div>
-			</div>
-		</div>
-	</div>
-
-	<p class="text-center"><a id="removeUser" email="{{userEmail}}" clicked="false">Delete your account</a></p>	
+{{!-- THIS IS THE PANEL FOR PICKING WHAT YOU WANT TO DO --}}
+<div class="container" class="collapse">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center"><strong>What would you like to do?</strong></h3>
+                    <br>
+                    <button data-toggle="collapse" data-target="#demo2" type="submit" class="btn btn-lg btn-primary" id="search-btn"> Create a game</button>
+                    {{!-- <h3 class="panel-title text-center"><strong>Click the join button below to join a game</strong></h3>
+                    <br> --}}
+                    <button id="joinjoin" data-toggle="collapse" data-target="#demo3" type="submit" class="btn btn-lg btn-primary btn pull-right" id="search-btn">View Games</button>
+                </div>
+            </div>
+        </div>            
+    </div>
+{{!-- THIS IS THE FORM FOR CREATING A GAME --}}
+    <div id="demo2" class="collapse">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Start a Game</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <form  id="game-form" role="form">
+                            <div class="form-group">
+                                <label for="">Game Name</label>
+                                    <input type="text" class="form-control" id="game-name" placeholder="" required minlength="1" maxlength="80">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Sport Type</label>
+                                    <input type="text" class="form-control" id="event-sport" placeholder="" required minlength="1" maxlength="80">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Game Date</label>
+                                <input type="date" class="form-control" id="game-date" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Game Start Time</label>
+                                <input type="time" class="form-control" id="game-time" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Game Location</label>
+                                <input type="text" class="form-control" id="street" placeholder="Street" required minlength="1" maxlength="80">
+                                <input type="text" class="form-control" id="city" placeholder="City" required minlength="1" maxlength="45">
+                                {{!<input type="text" class="form-control" id="state" placeholder="ST">!}}
+                                <select id="inputState" class="form-control" required>
+                                    <option selected disabled="disabled" value="">Choose...</option>             
+                                    {{#each inputState}}
+                                        <option>{{this}}</option>
+                                    {{/each}}
+                         
+                                </select>
+                                <input type="number" class="form-control" id="zipcode" placeholder="Zip Code" required pattern="[0-9]{5}" title="Five digit zip code">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Minimum Age</label>
+                                <input type="date" class="form-control" id="min-birthdate" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Minimum Number of Players</label>
+                                <input type="number" class="form-control" id="min-players" placeholder="" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Maximum Number of Players</label>
+                                <input type="number" class="form-control" id="max-players" placeholder="" min="2" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Game Fee</label>
+                                <input type="number" class="form-control" id="game-fee" placeholder="" min="0.00" max="10000.00" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Is Equipment Required?</label>
+                                {{!<input type="text" class="form-control" id="equipment" placeholder="">!}}
+                                <select class="form-control" id="equipment" required>
+                                    <option selected disabled="disabled" value="">Choose...</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Skill Level</label>
+                                <select class="form-control" id="skill-level" required>
+                                    <option selected disabled="disabled" value="">Choose...</option>
+                                    <option>Novice</option>
+                                    <option>Intermediate</option>
+                                    <option>Expert</option>
+                                    <option>None Specified</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Gender Requirement</label>
+                                <select class="form-control" id="gender" required>
+                                    <option selected disabled="disabled" value="">Choose...</option>
+                                    <option>Men</option>
+                                    <option>Women</option>
+                                    {{!-- <option>Gender Agnostic</option> --}}
+                                    <option>Coed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Does the game support disabilities</label>
+                                <select class="form-control" id="disability" required>
+                                    <option selected disabled="disabled" value="">Choose...</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span> Create Game</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+{{!-- THIS IS THE PANEL FOR GAMES YOU HAVE JOINED --}}
+    <div id="demo3" class="collapse">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3>GAME LISTING</h3></div>
+                        <div class="panel-body">
+                            <table class="table table-condensed" style="border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th id="event-head">Name</th>
+                                        <th id="event-description">Type</th>
+                                        <th id="event-admin">Date</th>
+                                        <th id="event-location">City</th>
+                                        <th id="event-status">Game ON!</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each this.gameData}}
+                                        <tr data-toggle="collapse" data-target="#gameCollapse{{id}}" class="accordion-toggle gameRow" userId="{{../userId}}" gameId="{{this.id}}"  id="gameRow{{id}}">
+                                            <td id="event-head-joined">{{this.event_name}}</td>
+                                            <td id="event-description-joined">{{this.sport_type}}</td>
+                                            <td id="event-admin-joined">{{this.event_date}}</td>
+                                            <td id="event-location-joined">{{this.city}}</td>
+                                            {{!-- Do we need this? --}}
+                                            <td id="event-status-joined">{{this.game_on_boolean}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="12" class="hiddenRow">
+                                                <div class="accordian-body collapse" id="gameCollapse{{id}}">
+                                                <div id="game-details-joined">
+                                                    <h5 id="game-time-joined">Start time: {{this.event_time}}</h5>
+                                                    <h5 id="game-street-joined">Street: {{this.street}}</h5>
+                                                    <h5 id="game-city-joined">City: {{this.city}} {{this.state}} {{this.zipcode}}</h5>
+                                                    <h5 id="game-age-joined">Required birthdate: {{this.min_birthdate}}</h5>
+                                                    <h5 id="game-fee-joined">Game fee: ${{this.game_fee}}</h5>
+                                                    <h5 id="equipment-joined">Equipment needed: {{this.equipment_binary}}</h5>
+                                                    <h5 id="skill-level-joined">Skill level: {{this.skill_level_id}}</h5>
+                                                    <h5 id="gender-joined">Gender: {{this.gender_id}}</h5>
+                                                    <h5 id="disability-joined">Disability: {{this.disability_binary}}</h5>
+                                                    <h5 id="join-joined">
+                                                        <a href="#" class="btn btn-default btn-sm joinBtn" userId="{{../userId}}" gameId="{{this.id}}">Join</a>
+                                                    </h5>
+                                                </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+    <p class="text-center"><a id="removeUser" email="{{userEmail}}" clicked="false">Delete your account</a></p>
 </div>
-
-
-
