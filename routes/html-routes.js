@@ -43,11 +43,32 @@ module.exports = function(app) {
 					email: email
 				}
 			}).then(function(results) {
-				var name = results.first_name
-				var id = results.id
+				var name = results.first_name;
+				var id = results.id;
 
-				db.Event.findAll({}).then(function(gameData) {  
-					
+				var currentDate = new Date().toISOString().slice(0,10);
+
+				function addMonthsUTC (date, count) {
+					if (date && count) {
+					    var m, d = (date = new Date(+date)).getUTCDate()
+				  
+					    date.setUTCMonth(date.getUTCMonth() + count, 1)
+					    m = date.getUTCMonth()
+					    date.setUTCDate(d)
+					    if (date.getUTCMonth() !== m) date.setUTCDate(0)
+					}
+					return date.toISOString().slice(0,10)
+				}
+				
+				  var futureDate = addMonthsUTC(new Date(), 3)
+
+				db.Event.findAll({
+					where: {
+						event_date: {
+								between: [currentDate, futureDate]
+							}
+						}
+				}).then(function(gameData) {
 					var hbsObj = {
 						userEmail: email,
 						userId: id,
