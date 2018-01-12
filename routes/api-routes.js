@@ -51,7 +51,7 @@ module.exports = function(app) {
                 res.send("incorrect login")
             } else {
                 req.session.name = email;
-                res.send(req.session.name)
+                res.send()
             }
         })
     })
@@ -81,12 +81,61 @@ module.exports = function(app) {
         var minPlayers = req.body.minPlayers.trim();
         var maxPlayers = req.body.maxPlayers.trim();
         var gameFee = req.body.gameFee.trim();
-        var equipment = req.body.equipment.trim();
-        var skillLevel = req.body.skillLevel.trim();
-        var gender = req.body.gender.trim();
-        var disability = req.body.disability.trim();
+        var equipmentStr = req.body.equipment.trim();
+        var skillLevelStr = req.body.skillLevel.trim();
+        var genderStr = req.body.gender.trim();
+        var disabilityStr = req.body.disability.trim();
 
-        res.send()
+        if (equipmentStr === "No") {
+            var equipmentInt = 0
+        } else if (equipmentStr === "Yes") {
+            var equipmentInt = 1
+        }
+
+        if (skillLevelStr === "Novice") {
+            var skillLevelInt = 1
+        } else if (skillLevelStr === "Intermediate") {
+            var skillLevelInt = 2
+        } else if (skillLevelStr === "Expert") {
+            var skillLevelInt = 3
+        } else if (skillLevelStr === "None Specified") {
+            var skillLevelInt = 0
+        }
+
+        if (genderStr === "Men") {
+            var genderInt = 1
+        } else if (genderStr === "Women") {
+            var genderInt = 2
+        } else if (genderStr === "Coed") {
+            var genderInt = 3
+        }
+
+        if (disabilityStr === "No") {
+            var disabilityInt = 0
+        } else if (disabilityStr === "Yes") {
+            var disabilityInt = 1
+        }
+    
+        db.Event.create({
+            event_name: gameName,
+            sport_type: eventSport,
+            event_date: gameDate,
+            event_time: gameTime,
+            street: street,
+            city: city,
+            state: state,
+            zipcode: zipcode,
+            min_birthdate: minBirthDate,
+            min_players: minPlayers,
+            max_players: maxPlayers,
+            game_fee: gameFee,
+            equipment_binary: equipmentInt,
+            skill_level_id: skillLevelInt,
+            gender_id: genderInt,
+            disability_binary: disabilityInt
+        }).then(function(results) {
+            res.send()
+        })
     })
 }
 
