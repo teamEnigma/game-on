@@ -5,6 +5,7 @@ const authToken = process.env.AUTH_TOKEN;
 // require the Twilio module and create a REST client
 const client = require('twilio')(accountSid, authToken);
 
+// Send a text message to a specified number, and say which game is now on
 var sendMessage = function(userNumber, gameName) {
   client.messages
     .create({
