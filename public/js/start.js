@@ -80,7 +80,6 @@ $(document).ready(function() {
 						$("#gameCollapse" + gameId + " #join-joined").html("<br>You have been registered!")
 
 						if (response === "game on") {
-							alert("game on")
 							$("#gameRow" + gameId + " #event-status-joined").html("true")
 						}
 					});		
