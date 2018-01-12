@@ -144,7 +144,7 @@
                                 </thead>
                                 <tbody>
                                     {{#each this.gameData}}
-                                        <tr data-toggle="collapse" data-target="#gameCollapse{{id}}" class="accordion-toggle gameRow" userId="{{../userId}}" gameId="{{this.id}}">
+                                        <tr data-toggle="collapse" data-target="#gameCollapse{{id}}" class="accordion-toggle gameRow" userId="{{../userId}}" gameId="{{this.id}}"  id="gameRow{{id}}">
                                             <td id="event-head-joined">{{this.event_name}}</td>
                                             <td id="event-description-joined">{{this.sport_type}}</td>
                                             <td id="event-admin-joined">{{this.event_date}}</td>
