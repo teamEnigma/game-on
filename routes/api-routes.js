@@ -141,5 +141,36 @@ module.exports = function(app) {
             res.send()
         })
     })
+
+    app.post('/api/eventcheck', function(req, res) {
+        var userId = req.body.userId
+        var gameId = req.body.gameId
+
+        db.Roster.findOne({
+            where: {
+                UserId: userId,
+                EventId: gameId
+            }
+        }).then(function(results) {
+            if (results === null) {
+                res.send("havent joined")
+            } else {
+                res.send("already joined")
+            }
+        })
+    })
+
+    app.post('/api/eventconfirm', function(req, res) {
+        var userId = req.body.userId
+        var gameId = req.body.gameId
+
+        db.Roster.create({
+            UserId: userId,
+            EventId: gameId
+        }).then(function(results) {
+            res.send("joined successfully")
+        })
+
+    })
 }
 

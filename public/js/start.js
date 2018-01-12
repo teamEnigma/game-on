@@ -45,10 +45,54 @@ $(document).ready(function() {
 	        type: "POST",
 	        url: "/api/game",
 	        data: data
-	        //success: success,
-	        //dataType: dataType
 	    }).done(function(results) {
 	    	window.location.reload();
-        });
+		});
 	});
+
+	$(".gameRow").one( "click", function() {
+		var gameRow = this;
+		var userId = $(this).attr("userId");
+		var gameId = $(this).attr("gameId");
+
+		var data = {
+			userId: userId,
+			gameId: gameId
+		}
+
+	    $.ajax({
+	        type: "POST",
+	        url: "/api/eventcheck",
+	        data: data
+	    }).done(function(response) {
+	    	if (response === "havent joined") {
+				$("#gameCollapse" + gameId + " .joinBtn").css("visibility", "visible")
+
+				$("#gameCollapse" + gameId + " .joinBtn").click(function(event) {
+					event.preventDefault();
+			
+					var joinBtn = console.log(this);
+			
+					var userId = $(this).attr("userId");
+					var gameId = $(this).attr("gameId");
+			
+					var data = {
+						userId: userId,
+						gameId: gameId
+					}
+			
+					$.ajax({
+						type: "POST",
+						url: "/api/eventconfirm",
+						data: data
+					}).done(function(response) {
+						$("#gameCollapse" + gameId + " .joinBtn").css("visibility", "hidden")
+						$("#gameCollapse" + gameId + " #join-joined").html("<br>You have been registered!")
+					});		
+				})
+			} else if (response === "already joined") {
+				$("#gameCollapse" + gameId + " #join-joined").html("<br>You have been registered!")
+			}
+		});
+	})
 });

@@ -87,3 +87,7 @@ only screen and (max-width: 600px),
     white-space: nowrap;
   }
 }
+
+.joinBtn {
+  visibility: hidden;
+}
