@@ -44,14 +44,18 @@ module.exports = function(app) {
 				}
 			}).then(function(results) {
 				var name = results.first_name
-			
-				var hbsObj = {
-					userEmail: email,
-					userName: name,
-					inputState: stateArray
-				};
 
-				res.render("start", hbsObj)
+				db.Event.findAll({}).then(function(gameData) {  
+					
+					var hbsObj = {
+						userEmail: email,
+						userName: name,
+						inputState: stateArray,
+						gameData: gameData
+					};
+					
+					res.render("start", hbsObj)
+				})
 			})
 		} else {
 			res.redirect('/');

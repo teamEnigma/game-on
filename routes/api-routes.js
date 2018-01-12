@@ -1,6 +1,7 @@
 var db = require("../models/");
 
 module.exports = function(app) {
+    // Register a new user
     app.post('/api/register', function(req, res) {
         var firstName = req.body.firstName.trim();
         var lastName = req.body.lastName.trim();
@@ -37,6 +38,7 @@ module.exports = function(app) {
         })
     })
 
+    // Session login verification
     app.post('/api/login', function(req, res) {
         var email = req.body.email;
         var password = req.body.password;
@@ -56,6 +58,7 @@ module.exports = function(app) {
         })
     })
 
+    // Remove a user from the database
     app.delete('/api/remove', function(req, res) {
         var userEmail = req.body.email;
 
@@ -68,6 +71,7 @@ module.exports = function(app) {
         })
     })
 
+    // Add a new game to the database
     app.post('/api/game', function(req, res) {
         var gameName = req.body.gameName.trim();
         var eventSport = req.body.eventSport.trim();
@@ -137,5 +141,10 @@ module.exports = function(app) {
             res.send()
         })
     })
+
+    // app.get('/api/game', function(req, res) {
+
+    // })
+
 }
 

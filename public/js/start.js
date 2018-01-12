@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	// Remove a user from the database
     $("#removeUser").click(function(event) {
         event.preventDefault();
         var email = $(this).attr("email")
@@ -17,6 +18,7 @@ $(document).ready(function() {
         }
     });
 
+	// Add a new game
 	$("#game-form").submit(function(event) {
         event.preventDefault();
         
@@ -48,6 +50,20 @@ $(document).ready(function() {
 	    }).done(function(results) {
 	    	window.location.reload();
         });
-
 	});
+
+	// // Display the games
+	// $.ajax({
+	// 	type: "GET",
+	// 	url: "/api/game"
+	// 	// data: data
+	// 	//success: success,
+	// 	//dataType: dataType
+	// }).done(function(results) {
+	// 	console.log(results)
+	// 	for (i=0; i< results.length ;i++) {
+	// 		console.log(results[i].event_name)
+	// 	}
+	// });
+
 });
