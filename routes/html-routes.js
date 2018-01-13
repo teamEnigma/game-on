@@ -69,10 +69,28 @@ module.exports = function(app) {
 							gameData[i].game_on_boolean = "Not yet"
 						}
 					}
-					
-					// Game date format conversion
+
 					for (i in gameData) {
-						gameData[i].game_date = moment(gameData[i].event_date, 'YYYY-MM-DD').format('MMM Do YY');
+						if (gameData[i].equipment_binary === true) {
+							gameData[i].equipment_binary = "Yes"
+						} else if (gameData[i].equipment_binary === false){
+							gameData[i].equipment_binary = "No"
+						}
+					}
+
+					for (i in gameData) {
+						if (gameData[i].disability_binary === true) {
+							gameData[i].disability_binary = "Yes"
+						} else if (gameData[i].disability_binary === false){
+							gameData[i].disability_binary = "No"
+						}
+					}
+					
+					// Moment.js format conversion
+					for (i in gameData) {
+						gameData[i].game_date = moment(gameData[i].event_date, 'YYYY-MM-DD').format('MMM Do YYYY');
+						gameData[i].game_time = moment(gameData[i].event_time, 'hh:mm:ss').format('h:mm A');
+						gameData[i].min_birth = moment(gameData[i].min_birthdate, 'YYYY-MM-DD').format('MMM Do YYYY');
 					}
 
 					// Send all of the necessary data with handlebars
