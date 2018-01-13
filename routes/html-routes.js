@@ -1,5 +1,6 @@
 var db = require("../models");
-var email 	= require("../node_modules/emailjs/email");
+// var email 	= require("../node_modules/emailjs/email");
+var moment = require('moment');
 
 module.exports = function(app) {
 	// Data for the dropdown menus
@@ -10,8 +11,10 @@ module.exports = function(app) {
 
 	// Route to display the index page
     app.get('/index', function(req, res) {
+		// If the user is logged in, go to the start page
 		if (req.session.name) {
 			res.redirect('/start')
+		// If the user is logged out, go to the index page
 		} else {
 			res.render("index", {inputState: stateArray})
 		}
@@ -58,6 +61,20 @@ module.exports = function(app) {
 							}
 						}
 				}).then(function(gameData) {
+					// Change the game-on text from boolean to string				
+					for (i in gameData) {
+						if (gameData[i].game_on_boolean === true) {
+							gameData[i].game_on_boolean = "Confirmed"
+						} else if (gameData[i].game_on_boolean === false){
+							gameData[i].game_on_boolean = "Not yet"
+						}
+					}
+					
+					// Game date format conversion
+					for (i in gameData) {
+						gameData[i].game_date = moment(gameData[i].event_date, 'YYYY-MM-DD').format('MMM Do YY');
+					}
+
 					// Send all of the necessary data with handlebars
 					var hbsObj = {
 						userEmail: email,
