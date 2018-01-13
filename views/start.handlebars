@@ -113,7 +113,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Does the game support disabilities</label>
+                                <label for="">Does the game support disabilities?</label>
                                 <select class="form-control" id="disability" required>
                                     <option selected disabled="disabled" value="">Choose...</option>
                                     <option>Yes</option>
@@ -160,10 +160,10 @@
                                             <td colspan="12" class="hiddenRow">
                                                 <div class="accordian-body collapse" id="gameCollapse{{id}}">
                                                 <div id="game-details-joined">
-                                                    <h5 id="game-time-joined">Start time: {{this.event_time}}</h5>
+                                                    <h5 id="game-time-joined">Start time: {{this.game_time}}</h5>
                                                     <h5 id="game-street-joined">Street: {{this.street}}</h5>
                                                     <h5 id="game-city-joined">City: {{this.city}} {{this.state}} {{this.zipcode}}</h5>
-                                                    <h5 id="game-age-joined">Required birthdate: {{this.min_birthdate}}</h5>
+                                                    <h5 id="game-age-joined">Required birthdate: {{this.min_birth}}</h5>
                                                     <h5 id="game-fee-joined">Game fee: ${{this.game_fee}}</h5>
                                                     <h5 id="equipment-joined">Equipment needed: {{this.equipment_binary}}</h5>
                                                     <h5 id="skill-level-joined">Skill level: {{this.skill_level_id}}</h5>
