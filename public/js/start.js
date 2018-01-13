@@ -89,7 +89,7 @@ $(document).ready(function() {
 
 						// change the text when the game-on status has changed
 						if (response === "game on") {
-							$("#gameRow" + gameId + " #event-status-joined").html("true")
+							$("#gameRow" + gameId + " #event-status-joined").html("Confirmed")
 						}
 					});		
 				})
