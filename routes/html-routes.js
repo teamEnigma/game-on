@@ -1,5 +1,4 @@
 var db = require("../models");
-// var email 	= require("../node_modules/emailjs/email");
 var moment = require('moment');
 
 module.exports = function(app) {
